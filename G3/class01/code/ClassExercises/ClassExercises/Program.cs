@@ -24,7 +24,7 @@ List<string> splittedText = textInput.Split(" ").ToList();
 
 foreach (string name in names) 
 {
-    int count = splittedText.Count((word) => string.Equals(word, name));
+    int count = splittedText.Count(word => string.Equals(word, name));
     Console.WriteLine($"{name} : {count}");
 }
 
