@@ -16,7 +16,6 @@ while(true)
     }
 }
 
-
 Console.WriteLine("Please enter a text:");
 string textInput = Console.ReadLine();
 
@@ -25,5 +24,11 @@ List<string> splittedText = textInput.Split(" ").ToList();
 foreach (string word in words) 
 {
     int count = splittedText.Count(word => string.Equals(word, word));
+
+    //int count = splittedText.Count((word) => 
+    //{
+    //    return string.Equals(word, word);
+    //});
+
     Console.WriteLine($"{word} : {count}");
 }
