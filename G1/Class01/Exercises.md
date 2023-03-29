@@ -9,3 +9,7 @@ Ex. "Dear user, welcome to our company!"
 ### 2.
 Make the previous method a little more dynamic. Create another method that will have the name WelcomeUser, but it should print a message that will 'welcome' ANY user in the world!  
 Ex. "Dear { whateverName }, welcome to our company!". 
+
+### 3.
+So far so good. Make the previous method even more independant. Create another method that will have the name WelcomeUser, it should 'welcome' ANY user in the world, but that message should be available
+to be displayed not only in the console, but also ANYWHERE!
