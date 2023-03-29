@@ -1,6 +1,4 @@
-﻿
-using RockPaperScissors.Enum;
-using System.Reflection.Metadata.Ecma335;
+﻿using RockPaperScissors.Enum;
 
 int userWins = 0;
 int computerWins = 0;
@@ -45,11 +43,6 @@ while (true)
     {
         Console.WriteLine(ex.Message);
     }
-}
-
-static decimal CalculatePercentage(int wins, int total)
-{
-    return (wins / (decimal)total);
 }
 
 static OptionEnum SelectOption() 
@@ -102,4 +95,8 @@ static ResultEnum DecideWinner(OptionEnum userSelection, OptionEnum computerSele
     //{
     //    return ResultEnum.ComputerWins;
     //}
+}
+static decimal CalculatePercentage(int wins, int total)
+{
+    return (wins / (decimal)total);
 }
