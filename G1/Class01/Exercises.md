@@ -13,3 +13,11 @@ Ex. "Dear { whateverName }, welcome to our company!".
 ### 3.
 So far so good. Make the previous method even more independant. Create another method that will have the name WelcomeUser, it should 'welcome' ANY user in the world, but that message should be available
 to be displayed not only in the console, but also ANYWHERE!
+
+### 4.
+Create 5 methods by following the instructions
+* GetMessage() - should have one input parameter of type integer and array of strings. The method should return the message wich is on that integer position from the array of strings.  
+Ex. GetMessage(1, messages) => messages[1]
+* Average() - should have one input parameter of type List of integers, and should return the average of the list elements
+* Sum() - should have one input parameter of type List of integers, and should return the sum of the list elements
+* GetUserByName() - should have one input parameter of type List of User class. The method should return User from the list, by filtering it by user name. 
