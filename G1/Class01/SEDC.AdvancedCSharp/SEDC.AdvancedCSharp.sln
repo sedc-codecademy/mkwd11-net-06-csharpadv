@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.Exercises", "SEDC.Exercises\SEDC.Exercises.csproj", "{56AF922D-C9E0-47E6-8C84-FDBDCC141153}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.LINQ", "SEDC.LINQ\SEDC.LINQ.csproj", "{18182096-D0CD-4532-9D70-8E0D0BB21DD0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{56AF922D-C9E0-47E6-8C84-FDBDCC141153}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56AF922D-C9E0-47E6-8C84-FDBDCC141153}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56AF922D-C9E0-47E6-8C84-FDBDCC141153}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56AF922D-C9E0-47E6-8C84-FDBDCC141153}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18182096-D0CD-4532-9D70-8E0D0BB21DD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18182096-D0CD-4532-9D70-8E0D0BB21DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18182096-D0CD-4532-9D70-8E0D0BB21DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18182096-D0CD-4532-9D70-8E0D0BB21DD0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B6DA92B0-9DF4-4DFE-853A-B4FF330EF0C5}
+	EndGlobalSection
+EndGlobal
