@@ -1,34 +1,29 @@
-﻿List<string> names = new List<string>();
+﻿List<string> words = new List<string>();
 
 while(true)
 {
-    Console.WriteLine("Please enter a name, and press x to exit.");
-    string input = Console.ReadLine();
+    Console.WriteLine("Please enter a word or press X to exit:");
+    string wordInput = Console.ReadLine();
 
-    if (input.ToLower() != "x")
+    if (wordInput.ToLower() != "x")
     {
-        names.Add(input);
+        words.Add(wordInput);
     }
 
-    if (input.ToLower() == "x") 
+    if (wordInput.ToLower() == "x") 
     {
         break;
     }
 }
 
-string inputText = "";
-Console.WriteLine("Please enter a text:");
 
+Console.WriteLine("Please enter a text:");
 string textInput = Console.ReadLine();
+
 List<string> splittedText = textInput.Split(" ").ToList();
 
-foreach (string name in names) 
+foreach (string word in words) 
 {
-    int count = splittedText.Count(word => string.Equals(word, name));
-    Console.WriteLine($"{name} : {count}");
+    int count = splittedText.Count(word => string.Equals(word, word));
+    Console.WriteLine($"{word} : {count}");
 }
-
-
-
-
-

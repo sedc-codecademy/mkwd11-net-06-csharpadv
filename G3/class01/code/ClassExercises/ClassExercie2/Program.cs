@@ -14,14 +14,14 @@
 
 while (true) 
 {
-    Console.WriteLine("Please enter a date for check in format month/day/year");
+    Console.WriteLine("Please enter a date for check in format month/day/year:");
     string input = Console.ReadLine();
 
     string[] date = input.Split("/");
 
     if (date.Length != 3)
     {
-        throw new Exception("");
+        throw new Exception("Wrong input for date");
     }
 
     int[] dateSegment = new int[3];
@@ -32,7 +32,7 @@ while (true)
 
         if (!successParse)
         {
-            throw new Exception("");
+            throw new Exception("Wrong input for date");
         }
 
         dateSegment[i] = segment;
