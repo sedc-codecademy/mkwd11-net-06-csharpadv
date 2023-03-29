@@ -1,17 +1,56 @@
 ﻿
 using RockPaperScissors.Enum;
+using System.Reflection.Metadata.Ecma335;
 
 int userWins = 0;
 int computerWins = 0;
-int draw = 0;
+int draws = 0;
 
+while (true) 
+{
+    try
+    {
+        OptionEnum userSelection = SelectOption();
+        OptionEnum computerSelection = ComputerOption();
 
-OptionEnum userSelection = SelectOption();
-OptionEnum computerSelection = ComputerOption();
+        ResultEnum result = DecideWinner(userSelection, computerSelection);
 
-ResultEnum result = DecideWinner(userSelection, computerSelection);
+        switch (result)
+        {
+            case ResultEnum.PlayerWins:
+                userWins++;
+                break;
+            case ResultEnum.ComputerWins:
+                computerWins++;
+                break;
+            case ResultEnum.Draw:
+                draws++;
+                break;
+            default:
+                break;
+        }
 
-Console.ReadLine();
+        int playedGames = userWins + computerWins + draws;
+
+        Console.WriteLine($"===={userSelection}=====||====={computerSelection}====");
+        Console.WriteLine($"========{result}========");
+
+        Console.WriteLine($"{"Player",10}|{"Wins",6}|{"%",6}");
+
+        Console.WriteLine($"{"User",10}|{userWins,6}|{$"{CalculatePercentage(userWins, playedGames):P}",6}");
+        Console.WriteLine($"{"Computer",10}|{computerWins,6}|{$"{CalculatePercentage(computerWins, playedGames):P}",6}");
+        Console.WriteLine($"{"Draw",10}|{draws,6}|{$"{CalculatePercentage(draws, playedGames):P}",6}");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
+}
+
+static decimal CalculatePercentage(int wins, int total)
+{
+    return (wins / (decimal)total);
+}
 
 static OptionEnum SelectOption() 
 {
