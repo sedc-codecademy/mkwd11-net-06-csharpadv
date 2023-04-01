@@ -1,5 +1,4 @@
-﻿using QuizApp.Domain;
-using QuizApp.Domain.Models;
+﻿using QuizApp.Domain.Models;
 using QuizApp.Services;
 
 UserService userService = new UserService();
@@ -17,8 +16,31 @@ while (true)
         }
 
         Teacher teacher = userService.GetTeacherByUserName(username);
+        if (teacher != null) 
+        {
+            bool passwordMatch = userService.PasswordMatch(teacher.Password);
 
-        if (teacher != null) { }
+            if (!passwordMatch) 
+            {
+                throw new Exception("Password did not match 3 times. Try again later.");
+            }
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            List<Student> studentsThatDidQuiz = userService.GetStudentsThatDidTheQuiz();
+            foreach (Student student in studentsThatDidQuiz) 
+            {
+                Console.WriteLine($"{student.Firstname} {student.Lastname} - {student.CorrectAnswers}");
+            }
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            List<Student> studentsThatDidNotTakeQuiz = userService.GetStudentThatDidNotFinishTheQuiz();
+            foreach (Student student in studentsThatDidNotTakeQuiz)
+            {
+                Console.WriteLine($"{student.Firstname} {student.Lastname}");
+            }
+
+            Console.ResetColor();
+        }
 
         Console.ReadLine();
     }

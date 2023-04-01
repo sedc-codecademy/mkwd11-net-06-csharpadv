@@ -29,5 +29,21 @@ namespace QuizApp.Services
                 !student.HasFinishedQuiz).ToList();
         }
 
+        public bool PasswordMatch(string password) 
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine("Enter password:");
+                string passwordInput = Console.ReadLine();
+
+                if (password == passwordInput) 
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
     }
 }
