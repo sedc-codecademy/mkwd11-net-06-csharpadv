@@ -1,171 +1,205 @@
-# Class 02 - Static classes, members and polymorphism 🍔
+# Class 01 - Abstract Classes and Interfaces 🍕
 
-## Static Classes 🔹
+Since C# is an object-oriented language, it was built with classes and objects in mind and they are the main building blocks that we can use to build applications. That is why there are a lot of different keywords that are used for specializing classes for a particular purpose as well as different entities that are not classes, but support and build upon classes. With all these features, an ecosystem is created where it is easier to develop object-oriented applications, structure and organize them.
 
-Until this point, classes were something that we can create an instance and use whenever we need it. If we need another object of that class, we can just create another instance and use it again. When our code block ends, we can't use our instances of the classes we instantiated in that code block. But there are other types of classes and members we can use that differ from this system. Those are the static classes and members. Static in C# basically means that it will be created and stored in memory at some point when the application starts running and it will stay there, accessible from everywhere, at the same place, until the application is finished. This means that the static class or members can be accessed from anywhere, any time, store stuff in them, or use methods without worrying about what code block and in what scope you are currently working. Static classes also have ONLY ONE instance, meaning that you can't just create more instances of a static class. The one instance that is created automatically is the only one you can interact with for the rest of the application. This means that there is also no use in the new keyword or a variable that holds this static class. The class is already created when you start running your code, so you can immediately use it by just writing the name of the class as if it existed already.
+## Abstract Classes 🔹
 
-### Static class with static members
+### Why we need it
+
+When using object-oriented programming to translate some business logic concept, there are situations where we need a class that exists in our logic to support other concepts, but has very little meaning by itself. Usually, a class like this represents some base or core idea that other ideas can easily implement on, getting the name base classes. An example would be a Company App with a Human class that implements Employee and Manager classes. We need Employees and Managers, they share a lot of human behavior and properties, so we add the Human class as a parent, but the Human class only exists to support the other classes.
+
+### What is it
+
+In C# there is a special class that can make cases like these easier to implement. It's called an Abstract Class. Abstract classes are classes that can have an implementation, they can have methods, properties, constructors but they can't be instantiated. This means that we can't create a new instance out of the class with the new keyword. Now the question is, how can we use it then? Well, we can inherit from it and use it as a base class for our other classes,  without the risk of someone creating a class from it, that makes little sense. Abstract classes can also have abstract members.
+
+#### Abstract class with abstract member
 
 ```csharp
-public static class TextHelper
+public abstract class Human
 {
-    public static int CapitalLetterUses = 0;
-    public static string CapitalFirstLetter(string word)
-    {
-        if (word.Length == 0)
-        {
-            return "Empty String";
-        } 
-        else if (word.Length == 1)
-        {
-            return char.ToUpper(word[0]).ToString(); ;
-        }
-        else
-        {
-            return char.ToUpper(word[0]) + word.Substring(1);
-        }
-        CapitalLetterUses++;
-    }
-}
-```
-
-### Using static class
-
-```csharp
-Console.WriteLine(TextHelper.CapitalFirstLetter("bob"));
-```
-
-### Static Members
-
-Because a static class has only one instance and you can't use a variable to store it or make another instance, ALL MEMBERS of the static class MUST BE STATIC as well. But this is not the case for all static members. We can have static members in a class that is not static. This is a different scenario. Since the class is not static, we can create multiple instances of it, but the static members will not be part of any new instance. The static members can only be accessed from the class name itself, separately. With the class name, we can only access the static members and not the non-static members.
-
-### Where to use and not to use static classes
-
-Static classes are very convenient when developers are writing logic that is universal and that they will need at multiple different places, fast, without jumping through the hoops of instantiation, constructors, etc. Static classes can also keep data that is available throughout the application, like configuration data or just storing some values until the end of our application. This can be used to simulate a temporary database for quick development. But, as cool as the static classes sound, they carry weight with them when we run the application. Unlike the standard classes that are cleared from the memory when we are done using them, the static classes stay in memory throughout the whole application cycle and never go away. This can be an issue if we rely too much on them, so that is why they are used only when their usefulness outweighs their cost in memory.
-
-#### Standard class with a static method
-
-```csharp
-public class Order
-{
-  public int Id { get; set; }
-  public string Title { get; set; }
-  public string Description { get; set; }
-  public string Print()
+  public string FullName { get; set; }
+  public int Age { get; set; }
+  public long Phone { get; set; }
+  // Abstract method, will require the child class to provide implementation
+  public abstract string GetInfo();
+  public Human(string fullname, int age, long phone)
   {
-    // We can use the helper class anywhere we need it without an instance
-    return $"{TextHelper.CapitalFirstLetter(Title)} - {Description}";
+    FullName = fullname;
+    Age = age;
+    Phone = phone;
   }
-  public static bool IsOrderValid(Order order)
+  // Not abstract method will be inherited as is
+  public void Greet(string name)
   {
-    if (order.Id <= 0 && order.Title == "") return false;
-    return true;
+    Console.WriteLine($"Hey there {name}! My name is {FullName}!");
   }
 }
 ```
 
-#### Using the standard class and the static method
+#### Standard class implementing the abstract one
 
 ```csharp
-// We must have an instance to call Print()
-Order ord = new Order();
-Console.WriteLine(ord.Print());
-// We can't call Print() on the Order class
-Order.Print(); // Will show as an error
-// We can call IsOrderValid on Order class
-Console.WriteLine(Order.IsOrderValid(ord));
-// We can't call IsOrderValid on the instance of the class Order
-ord.IsOrderValid(ord); // Will show an error
-```
-
-## Polymorphism 🔹
-
-Polymorphism is one of the base concepts of Object-Oriented programming. Since C# is an object-oriented language and was built that way, this concept is embedded in its core. The name Polymorphism can sound a bit complicated, but the idea of polymorphism is not that complicated. Methods in C# need to have different names for us to differentiate them. We can't create methods that share the same name as well. But that is not always the case. With polymorphism we can actually have multiple methods with the same name and the compiler can differentiate them one from the other. This is done in a few ways:
-
-* Compile time polymorphism ( Method overloading ) - This type of polymorphism is decided on compile-time and the compiler can basically tell which method is which by looking at their signature. The signature of a method is the order, type, and a number of parameters that they have. So if those 3 criteria match, the compiler will decide that 2 methods are the same, and it will throw an error. If only one of those criteria is different, then the compiler will differentiate between as many methods with the same name, as long as they all have different signatures.
-
-```csharp
-// Static polymorphism ( Method overloading )
-// Both methods have the same name
-// Their signature is different
-public static void PetStatus(Dog pet, string ownerName)
+public class Developer : Human
 {
-  Console.WriteLine($"Hey there {ownerName}");
-  if (pet.IsGoodBoi) Console.WriteLine("This dog is a good boi :)");
-  else Console.WriteLine("This dog is not really a good boi :(");
-}
-// Signature is different when the order of the properties do not match
-public static void PetStatus(string ownerName, Dog pet)
-{
-  Console.WriteLine($"Hey there {ownerName}. Happy to see you again!");
-  if (pet.IsGoodBoi) Console.WriteLine("This dog is still a good boi :)");
-  else Console.WriteLine("This dog is still not really a good boi :(");
-}
-// Signature is different if the property types do not match
-public static void PetStatus(Cat pet, string ownerName)
-{
-  Console.WriteLine($"Hey there {ownerName}");
-  if (pet.IsLazy) Console.WriteLine("This cat is really lazy :(");
-  else Console.WriteLine("This cat is cool and not lazy at all :)");
-}
-// Signature is different if the number of properties does not match
-public static void PetStatus(Cat pet)
-{
-  Console.WriteLine($"Hey, a cat with no owner.");
-  if (pet.IsLazy) Console.WriteLine("This cat is really lazy :(");
-  else Console.WriteLine("This cat is cool and not lazy at all :)");
-}
-```
-
-```csharp
-// They all work as intended
-PetStatus(sparky, "Bob");
-PetStatus("Bob", sparky);
-PetStatus(meow, "Jill");
-PetStatus(meow);
-```
-
-* Runtime polymorphism ( Method overriding ) - This type of polymorphism is decided on runtime, and is done with overriding a parent class method. This means that there can be multiple classes that have the same method from a parent class, but they can have a different implementation in it.
-
-```csharp
-public class Pet
-{
-  public string Name { get; set; }
-  public virtual void Eat()
+  public List<string> ProgrammingLanguages { get; set; } = new List<string>();
+  public int YearsExperience { get; set; }
+  public void Code()
   {
-    Console.WriteLine("Nom nom nom");
+    Console.WriteLine("tak tak tak...");
+    Console.WriteLine("*Opens Stack Overflow...");
+    Console.WriteLine("tak tak tak tak tak...");
   }
-}
-public class Dog : Pet
-{
-  public bool IsGoodBoi { get; set; }
-  public override void Eat()
+
+  public Developer(string fullname, int age, long phone, List<string> languages, int experience ) 
+    : base(fullname, age, phone)
   {
-    Console.WriteLine("Nom nom noming on dog food!");
+    ProgrammingLanguages = languages;
+    YearsExperience = experience;
   }
-}
-public class Cat : Pet
-{
-  public bool IsLazy { get; set; }
-  public override void Eat()
+  public override string GetInfo()
   {
-    Console.WriteLine("Nom nom noming on cat food!");
+    return $"{FullName} ({Age}) - {YearsExperience} years of experience!";
   }
 }
 ```
 
-```csharp
-Dog sparky = new Dog() { Name = "Sparky", IsGoodBoi = true };
-Cat meow = new Cat() { Name = "Meow", IsLazy = false };
+#### Instances from abstract and standard that implements an abstract one
 
-// They work as intended
-sparky.Eat();
-meow.Eat();
+```csharp
+// Will not compile and show error
+Human person = new Human(); 
+// Will compile since it just inherits from the abstract
+Developer dev = new Developer("Bob Bobsky", 44, 38970070070, new List<string>() { "JavaScript", "C#", "HTML", "CSS" }, 6); 
 ```
+
+### Features and comparison
+
+Abstract classes can be inherited from, but not instantiated which is the main feature of this type of class. Like standard classes, they can have properties and methods with implementation, that will be inherited and used in the child classes later as is. But there is another type of member that we can use in abstract classes, and those are abstract members. Abstract members are members that we know we are going to need in the child classes, but we don't give out the implementation. With abstract members, we decide that all the child classes will have the method but they need to give implementation themselves. This can be used when we have a method that we know we are going to need on all child classes, but the implementation differs for each and every one of them.  
+
+### Abstract class vs Standard class
+
+| **Feature**                        | **Abstract Class** | **Standard Class** |
+|------------------------------------|--------------------|--------------------|
+| Constructors                       | Yes                | Yes                |
+| Instantiation                      | No                 | Yes                |
+| Method implementation              | Yes                | Yes                |
+| Members without implementation     | Yes                | No                 |
+| Inheritance                        | Yes                | Yes                |
+| Multiple Inheritance               | No                 | No                 |
+| Access Modifiers                   | Yes                | Yes                |
+
+## Interfaces 🔹
+
+When we talk about an abstract class we basically create an abstraction that will help us manage our standard classes better. But there is another form of abstraction in C# that can abstract our concepts even further. It's called Interface and it is not a type of class. It is an entity on its own. This entity is very different from a class because it is not holding any implementation whatsoever. This means that even if we wanted to, we can't tell this interface how to work and what to do. So now this might be a little bit confusing. Why do we have an entity that can't hold implementation? Doesn't this make it useless? Well, this entity is exactly what we need if we want to constrain classes to certain rules as well as work with all types that follow a certain rule set. Even tho we can't use the implementation in interfaces, we can use them to inherit from. When we inherit from an interface WE MUST implement the members that the interface holds. It is like a schematic that we MUST follow when building a class if we want to implement a certain interface. If the interface has 3 methods, the class must have those 3 methods and implement them. We can also inherit from as many interfaces as we need, unlike classes from which we can inherit only once.
+
+### Where are they used
+
+Interfaces are used to set rules for classes. These rule sets can mix and match, having multiple rule sets apply to one class, or one rule set that applies to multiple classes at once. With this, our code can be more modular and organized and other developers can implement new classes easily. They are also used as a filter or placeholder for a type that needs to be acquired later. When we use the interface as a type, the interface will accept any object that implements that interface. This can be very useful since we can have multiple objects implementing that interface and all of them will be eligible to be used in our logic without us worrying which one is it. The interface has certain members that must be implemented and it will let any object pass that inherits the interface itself because IT IS SURE that those members are implemented. If they are not implemented, we would not be able to compile our code.
+
+#### Interfaces
+
+```csharp
+public interface IDeveloper
+{
+  // Anyone who implements this interface must have a Code() method that does not return anything
+  void Code();
+}
+public interface ITester
+{
+  // Anyone who implements this interface must have a TestFeature() method that does not return anything and has a string parameter
+  void TestFeature(string feature);
+}
+```
+
+#### Inheriting from interfaces
+
+```csharp
+// Must have GetInfo from the abstract class Human, Code from IDeveloper, and TestFeature from ITester
+public class QAEngineer : Human, IDeveloper, ITester
+{
+  public List<string> TestingFrameworks { get; set; }
+  public void Code()
+  {
+    Console.WriteLine("tak tak tak...");
+    Console.WriteLine("Open StackEchange SQA...");
+    Console.WriteLine("tak tak tak tak tak...");
+  }
+  public QAEngineer(string fullname, int age, long phone, List<string> frameworks)
+    : base(fullname, age, phone)
+  {
+    TestingFrameworks = frameworks;
+  }
+  public override string GetInfo()
+  {
+    return $"{FullName} ({Age}) - Knows {(TestingFrameworks.Count != 0 ? TestingFrameworks[0] : "unknown")} testing frameworks!";
+  }
+
+  public void TestFeature(string feature)
+  {
+    Console.WriteLine("Run Unit Tests...");
+    Console.WriteLine("Run Automated Tests...");
+    Console.WriteLine($"Tests for the {feature} feature are done!");
+  }
+}
+```
+
+#### Using interface as parameter
+
+```csharp
+// SETUP
+public interface IHuman
+{
+  string GetInfo();
+  void Greet(string name);
+}
+public abstract class Human : IHuman
+{
+... implementation ...
+}
+public class Developer : Human, IDeveloper
+{
+... implementation ...
+}
+public class Tester : Human, ITester
+{
+... implementation ...
+}
+```
+
+```csharp
+// IHuman makes sure that the GetInfo() method will be implemented
+// Anyone who implements IHuman in their chain can be accepted here
+public void HappyBirthday(IHuman person)
+{
+    Console.WriteLine($"This is {person.GetInfo()}!");
+    Console.WriteLine("Happy birthday! We are glad that you are part of this company!");
+}
+```
+
+```csharp
+Developer dev = new Developer("Bob Bobsky", 44, 38970070070, new List<string>() { "JavaScript", "C#", "HTML", "CSS" }, 6);
+Tester tester = new Tester("Jill Wayne", 32, 38971071071, 560);
+
+HappyBirthday(dev); // Will call GetInfo() implementation from Developer
+HappyBirthday(tester); // Will call GetInfo() implementation from Tester
+```
+
+### Interface vs Abstract class
+
+| Feature                        | Interface | Abstract Class |
+|--------------------------------|-----------|----------------|
+| Constructors                   | No        | Yes            |
+| Instantiation                  | No        | No             |
+| Method implementation          | No        | Yes            |
+| Members without implementation | Yes       | Yes            |
+| Inheritance                    | Yes       | Yes            |
+| Multiple Inheritance           | Yes       | No             |
+| Access Modifiers               | No        | Yes            |
 
 ## Extra Materials 📘
 
-* [Microsoft - Static class and members](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/static-classes-and-static-class-members)
-* [Microsoft - Polymorphism](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/polymorphism)
-* [Static keyword in C#](https://medium.com/hackernoon/c-static-vs-instance-classes-and-methods-50fe8987b231)
-* [Understanding polymorphism in C#](https://www.c-sharpcorner.com/UploadFile/ff2f08/understanding-polymorphism-in-C-Sharp)
+* [Microsoft - Abstract keyword](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/abstract)
+* [Microsoft - Interfaces](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/interfaces/)
+* [Abstract classes with examples](https://www.guru99.com/c-sharp-abstract-class.html)
+* [Interface or Abstract Class](https://medium.com/@suhas_chatekar/interfaces-or-abstract-classes-bce12dce97e)
+* [Implementing multiple interfaces](https://medium.com/swlh/implementing-multiple-interfaces-per-class-438da4092242)
