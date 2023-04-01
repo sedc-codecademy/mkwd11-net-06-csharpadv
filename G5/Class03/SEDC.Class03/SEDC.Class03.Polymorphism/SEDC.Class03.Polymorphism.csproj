@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SEDC.Class03.Domain\SEDC.Class03.Domain.csproj" />
+    <ProjectReference Include="..\SEDC.Class03.PartialClasses\SEDC.Class03.PartialClasses.csproj" />
+  </ItemGroup>
+
+</Project>
