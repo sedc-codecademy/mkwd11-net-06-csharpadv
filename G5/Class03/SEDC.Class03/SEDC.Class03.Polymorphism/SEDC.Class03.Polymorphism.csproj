@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\QuizApp.Domain\QuizApp.Domain.csproj" />
-    <ProjectReference Include="..\QuizApp.Services\QuizApp.Services.csproj" />
+    <ProjectReference Include="..\SEDC.Class03.Domain\SEDC.Class03.Domain.csproj" />
+    <ProjectReference Include="..\SEDC.Class03.PartialClasses\SEDC.Class03.PartialClasses.csproj" />
   </ItemGroup>
 
 </Project>
