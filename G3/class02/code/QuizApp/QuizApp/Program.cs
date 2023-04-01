@@ -2,6 +2,7 @@
 using QuizApp.Services;
 
 UserService userService = new UserService();
+QuizService quizService = new QuizService();
 
 while (true) 
 {
@@ -16,18 +17,18 @@ while (true)
         }
 
         Teacher teacher = userService.GetTeacherByUserName(username);
-        if (teacher != null) 
+        if (teacher != null)
         {
             bool passwordMatch = userService.PasswordMatch(teacher.Password);
 
-            if (!passwordMatch) 
+            if (!passwordMatch)
             {
                 throw new Exception("Password did not match 3 times. Try again later.");
             }
 
             Console.ForegroundColor = ConsoleColor.Green;
             List<Student> studentsThatDidQuiz = userService.GetStudentsThatDidTheQuiz();
-            foreach (Student student in studentsThatDidQuiz) 
+            foreach (Student student in studentsThatDidQuiz)
             {
                 Console.WriteLine($"{student.Firstname} {student.Lastname} - {student.CorrectAnswers}");
             }
@@ -40,6 +41,29 @@ while (true)
             }
 
             Console.ResetColor();
+        }
+        else 
+        {
+            Student student = userService.GetStudentByUsername(username);
+
+            if (student == null) 
+            {
+                throw new Exception("That user does not exist.");
+            }
+
+            bool passwordMatch = userService.PasswordMatch(student.Password);
+
+            if (!passwordMatch)
+            {
+                throw new Exception("Password did not match 3 times. Try again later.");
+            }
+
+            if (student.HasFinishedQuiz) 
+            {
+                throw new Exception("You already did the quiz.");
+            }
+
+            quizService.TakeQuiz(student);
         }
 
         Console.ReadLine();
