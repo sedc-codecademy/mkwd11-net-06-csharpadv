@@ -1,4 +1,4 @@
-# Class 01 - Abstract Classes and Interfaces 🍕
+# Class 03 - Abstract Classes and Interfaces 🍕
 
 Since C# is an object-oriented language, it was built with classes and objects in mind and they are the main building blocks that we can use to build applications. That is why there are a lot of different keywords that are used for specializing classes for a particular purpose as well as different entities that are not classes, but support and build upon classes. With all these features, an ecosystem is created where it is easier to develop object-oriented applications, structure and organize them.
 
