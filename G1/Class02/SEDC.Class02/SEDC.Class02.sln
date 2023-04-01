@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.AbstractClasses", "SEDC.AbstractClasses\SEDC.AbstractClasses.csproj", "{06500CF3-C7FE-4577-9DD5-00BAB9A17459}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.Interfaces", "SEDC.Interfaces\SEDC.Interfaces.csproj", "{529B3D4B-C797-4D75-93BD-5177B950F489}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06500CF3-C7FE-4577-9DD5-00BAB9A17459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06500CF3-C7FE-4577-9DD5-00BAB9A17459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06500CF3-C7FE-4577-9DD5-00BAB9A17459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06500CF3-C7FE-4577-9DD5-00BAB9A17459}.Release|Any CPU.Build.0 = Release|Any CPU
+		{529B3D4B-C797-4D75-93BD-5177B950F489}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{529B3D4B-C797-4D75-93BD-5177B950F489}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{529B3D4B-C797-4D75-93BD-5177B950F489}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{529B3D4B-C797-4D75-93BD-5177B950F489}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC57B285-83CE-45F2-B580-EB366A6483D5}
+	EndGlobalSection
+EndGlobal
