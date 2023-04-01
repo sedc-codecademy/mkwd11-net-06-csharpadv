@@ -1,5 +1,4 @@
-﻿using LINQ.Homework.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace SEDC.LINQ
 {

@@ -47,10 +47,14 @@ namespace SEDC.LINQ
 
             // QUERIES!
 
-            // - how many Songs start with the letter 'a' (case insensitive)
+            // - how many Songs start with the letter 'a' (case insensitive) - DONE
             // - how many artists end with letter 'a' (case insensitive)
-            // - whats the name of the song with longest duration
-            // - whats the total Duration of all Songs
+
+            // - whats the name of the song with longest duration - DONE
+
+            // - whats the total Duration of all Songs - DONE
+
+
             // - how many albums have Songs longer than 300 seconds
             // - print the names of the artists(separated with "--"), that have more than one album of PopRock genre
             // - print the name of the album that has highest Average duration of a song
@@ -73,6 +77,15 @@ namespace SEDC.LINQ
             // 3, 2, 1.... GO! :)
 
 
+            int songsThatStartsWithLetterA = Songs.Where(song => song.Name.ToLower().StartsWith('a')).Count();
+            Console.WriteLine($"Number of songs that starts with letter A: {songsThatStartsWithLetterA}");
+
+
+            string songNameWithLongestDuration = Songs.OrderByDescending(song => song.Duration).First().Name;
+            Console.WriteLine($"The song name with the longest duration is: {songNameWithLongestDuration}");
+
+            int totalDurationOfAllSongs = Songs.Sum(song => song.Duration);
+            Console.WriteLine($"The total duration of all songs is: {totalDurationOfAllSongs}");
 
             Console.ReadLine();
         }

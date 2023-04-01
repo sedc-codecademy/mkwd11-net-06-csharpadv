@@ -1,4 +1,4 @@
-﻿namespace LINQ.Homework.Models
+﻿namespace SEDC.LINQ
 {
     public enum ArtistType
     {
