@@ -17,7 +17,7 @@ namespace SEDC.Class03.OrderingApp.Domain.Models
             Status = status;
         }
 
-        // You need to have private field if you are manipulating with custom getter/setter to prevent recursion in the setter
+        // You need to have private field if you are manipulating with custom getter/setter to prevent a recursion in the setter
         private string _title;
 
         public int Id { get; set; }
