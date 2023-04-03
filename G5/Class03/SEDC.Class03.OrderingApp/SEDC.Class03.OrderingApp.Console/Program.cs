@@ -23,8 +23,13 @@ using SEDC.Class03.OrderingApp.Domain.Models;
 
 
 // Custom Getter/Setter example
+
+// When we are setting a value to a property, the setter of that property activates
 //Order testOrder = new Order() { Title = "random" };
 //testOrder.Title = "Test";
+
+
+// When we are getting the value of some property, the getter of that property is activated
 //Console.WriteLine(testOrder.Title);
 
 // Property without setter - You can only set it in constructor
