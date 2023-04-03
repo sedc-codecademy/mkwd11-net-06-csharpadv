@@ -5,6 +5,7 @@ namespace SEDC.Class03.OrderingApp.Domain.Models
     public class User
     {
         private static int _userCounter = 1;
+
         public User(string username, string address)
         {
             Id = _userCounter;
@@ -15,7 +16,7 @@ namespace SEDC.Class03.OrderingApp.Domain.Models
         }
 
         public int Id { get; set; }
-        public string Username { get; set; }
+        public string Username { get; }
         public string Address { get; set; }
         public List<Order> Orders { get; set; } = new List<Order>();
 

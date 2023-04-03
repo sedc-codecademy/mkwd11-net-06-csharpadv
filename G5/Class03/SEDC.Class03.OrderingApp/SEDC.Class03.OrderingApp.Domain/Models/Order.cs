@@ -4,6 +4,11 @@ namespace SEDC.Class03.OrderingApp.Domain.Models
 {
     public class Order
     {
+        public Order()
+        {
+            Status = OrderStatus.Processing;
+        }
+
         public Order(int id, string title, string description, OrderStatus status)
         {
             Id = id;
@@ -12,8 +17,14 @@ namespace SEDC.Class03.OrderingApp.Domain.Models
             Status = status;
         }
 
-        public int Id{ get; set; }
-        public string Title { get; set; }
+        private string _title;
+
+        public int Id { get; set; }
+        public string Title
+        {
+            get => _title;
+            set => _title = TextHelper.CapitalizeFirstLetter(value);
+        }
         public string Description { get; set; }
         public OrderStatus Status { get; set; }
 

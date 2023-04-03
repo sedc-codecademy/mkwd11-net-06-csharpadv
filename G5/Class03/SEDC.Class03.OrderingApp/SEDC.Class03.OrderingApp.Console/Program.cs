@@ -21,6 +21,16 @@ using SEDC.Class03.OrderingApp.Domain.Models;
 // * Create customer getter and setter on atleast one property
 
 
+
+// Custom Getter/Setter example
+//Order testOrder = new Order() { Title = "random" };
+//testOrder.Title = "Test";
+//Console.WriteLine(testOrder.Title);
+
+// Property without setter - You can only set it in constructor
+//User randomUser = new User("Angel", "TestAddress");
+//randomUser.Username = "Danilo";
+
 User currentUser = null;
 
 while (true)
@@ -29,7 +39,10 @@ while (true)
 
     Console.Clear();
     Console.WriteLine("Main Menu");
-
+    if (TextHelper.OrderChecked > 0)
+    {
+        TextHelper.WriteLineInColor($"[Fun Fact]: People checked their order status {TextHelper.OrderChecked} {(TextHelper.OrderChecked == 1 ? "time" : "times")}!", ConsoleColor.DarkCyan);
+    }
     StaticDatabase.ListUsers();
     Console.Write("Choose User: ");
 
@@ -71,7 +84,7 @@ while (true)
             case 1:
                 Console.Clear();
                 currentUser.PrintOrders();
-                Console.WriteLine("Choose one to check the status: ");
+                Console.Write("Choose one to check the status: ");
 
                 int orderChoice = TextHelper.ValidateNumber(Console.ReadLine());
                 if (orderChoice == -1)
@@ -85,10 +98,23 @@ while (true)
                 }
 
 
+                TextHelper.GenerateStatusMessage(currentUser.Orders[orderChoice - 1].Status);
                 Console.ReadKey();
                 break;
             case 2:
-                Console.WriteLine("Choice 2");
+                Console.Clear();
+
+                Console.WriteLine("=== Adding Order ===");
+                Order newOrder = new Order();
+
+                Console.Write("Name: ");
+                newOrder.Title = Console.ReadLine();
+
+                Console.Write("Description: ");
+                newOrder.Description = Console.ReadLine();
+
+                StaticDatabase.InsertOrder(currentUser, newOrder);
+                Console.ReadKey();
                 break;
             case 3:
                 currentUser = null;

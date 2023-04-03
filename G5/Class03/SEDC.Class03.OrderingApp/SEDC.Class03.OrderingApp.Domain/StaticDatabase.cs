@@ -9,10 +9,22 @@ namespace SEDC.Class03.OrderingApp.Domain
         {
             SeedData();
             TextHelper.WriteLineInColor("Database initialized...", ConsoleColor.DarkGreen);
+            CurrentOrderId = Orders.Count;
         }
+
+        private static int CurrentOrderId;
 
         public static List<User> Users { get; set; } = new List<User>();
         public static List<Order> Orders { get; set; } = new List<Order>();
+
+        public static void InsertOrder(User userMakingTheOrder, Order order)
+        {
+            order.Id = ++CurrentOrderId;
+            Orders.Add(order);
+            userMakingTheOrder.Orders.Add(order);
+
+            TextHelper.WriteLineInColor("Order successfully added!", ConsoleColor.DarkGreen);
+        }
 
         public static void ListUsers()
         {
