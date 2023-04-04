@@ -24,10 +24,7 @@ void CreateNote(IThingsThatCanWriteNote tool)
 }
 #endregion
 
-
-
 Console.WriteLine("===============================");
-
 
 #region Interfaces Example 2
 
@@ -48,9 +45,4 @@ qAEng.CodingAndTesting();
 
 
 #endregion
-
-
-
-
-
 
