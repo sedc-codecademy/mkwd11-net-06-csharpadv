@@ -100,7 +100,6 @@
                 Console.WriteLine("You have inputed wrong date");
                 return DateTime.MinValue;
             }
-
             return date;
         }
 
@@ -142,4 +141,18 @@
             }
         }
     }
+
+    //Person p = new Person(); => creates an object and places it memory;
+    //Person p1 = new Person(); => creates another object and places it memory;
+
+    //on start will create object in memory that is related to Helper class;
+    //Helper.Trim("Sasa");
+
+    //static class Helper
+    //{
+    //    public static string Trim(string s)
+    //    {
+    //        return s.Trim();
+    //    }
+    //}
 }
