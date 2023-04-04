@@ -4,7 +4,9 @@ namespace SEDC.Class03.OrderingApp.Domain.Models
 {
     public class User
     {
+        // Static Property / Private Fielod in non-static class is owned by the class instead of the instantiated object out of it ( You access it directly from the class User._userCounter )
         private static int _userCounter = 1;
+
         public User(string username, string address)
         {
             Id = _userCounter;
@@ -15,7 +17,7 @@ namespace SEDC.Class03.OrderingApp.Domain.Models
         }
 
         public int Id { get; set; }
-        public string Username { get; set; }
+        public string Username { get; }
         public string Address { get; set; }
         public List<Order> Orders { get; set; } = new List<Order>();
 

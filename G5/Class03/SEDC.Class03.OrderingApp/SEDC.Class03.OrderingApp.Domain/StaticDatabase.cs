@@ -3,16 +3,38 @@ using SEDC.Class03.OrderingApp.Domain.Models;
 
 namespace SEDC.Class03.OrderingApp.Domain
 {
+    // This static class is serving as a temporary database
+    // While the app is running, the static members of this class will keep their data
+    // It can also be accessed from anywhere
     public static class StaticDatabase
     {
+
+        // Static Constructor
+        // Static class will only instantiate once, the first time we use it
+        // Static constructor does not have access modifier
         static StaticDatabase()
         {
             SeedData();
             TextHelper.WriteLineInColor("Database initialized...", ConsoleColor.DarkGreen);
+            CurrentOrderId = Orders.Count;
         }
 
+        // This is a private field that helps us auto-increment order IDs
+        private static int CurrentOrderId;
+
+        // These are the lists that will serve as tables in a database ( Store items in them )
         public static List<User> Users { get; set; } = new List<User>();
         public static List<Order> Orders { get; set; } = new List<Order>();
+
+        public static void InsertOrder(User userMakingTheOrder, Order order)
+        {
+            // When an order is added, we increment the ID and set it to the new order
+            order.Id = ++CurrentOrderId;
+            Orders.Add(order);
+            userMakingTheOrder.Orders.Add(order);
+
+            TextHelper.WriteLineInColor("Order successfully added!", ConsoleColor.DarkGreen);
+        }
 
         public static void ListUsers()
         {
