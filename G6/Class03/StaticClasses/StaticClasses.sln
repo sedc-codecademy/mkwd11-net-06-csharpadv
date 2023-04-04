@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaticClasses", "StaticClasses\StaticClasses.csproj", "{996541B7-1F1C-4800-B07B-1F978E11AD48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaticClasses.Domain", "StaticClasses.Domain\StaticClasses.Domain.csproj", "{4B912933-C53E-4781-9367-04881B0CA902}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{996541B7-1F1C-4800-B07B-1F978E11AD48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{996541B7-1F1C-4800-B07B-1F978E11AD48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{996541B7-1F1C-4800-B07B-1F978E11AD48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{996541B7-1F1C-4800-B07B-1F978E11AD48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B912933-C53E-4781-9367-04881B0CA902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B912933-C53E-4781-9367-04881B0CA902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B912933-C53E-4781-9367-04881B0CA902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B912933-C53E-4781-9367-04881B0CA902}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7951DE01-DBD5-48F4-9F93-9B115F5667C4}
+	EndGlobalSection
+EndGlobal
