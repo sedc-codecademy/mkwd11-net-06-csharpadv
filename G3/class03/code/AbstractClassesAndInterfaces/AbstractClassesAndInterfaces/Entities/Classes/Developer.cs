@@ -23,7 +23,9 @@ namespace AbstractClassesAndInterfaces.Entities.Classes
 
         public void Code()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("tak tak tak...");
+            Console.WriteLine("*Opens Stack Overflow...");
+            Console.WriteLine("tak tak tak tak tak...");
         }
 
         public override string GetInfo()
