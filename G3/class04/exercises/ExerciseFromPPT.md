@@ -2,17 +2,17 @@
 
 Create an interfaces called IUser, IStudent, ITeacher​
 
-IUser : PrintUser() - Prints Id, Name and Username​
+IUser : signature of PrintUser()
 
-User: Id, Name, Username, Password,
+User: Id, Name, Username, Password, PrintUser() as abstract method
 
-IStudent: override PrintUser() to show grades​
+IStudent: signature of PringGrades() 
 
-Student: Grades
+Student: Grades, override PrintUser() - to show Name, username and Average grade
 
-ITeacher: override PrintUser() to show subject​
+ITeacher: signature of PrintSubjects 
 
-Teacher: Subject
+Teacher: Subject, override PrintUser() to show Name, username and number of subjects
 
 Create an abstract class User and inherits from IUser​
 
