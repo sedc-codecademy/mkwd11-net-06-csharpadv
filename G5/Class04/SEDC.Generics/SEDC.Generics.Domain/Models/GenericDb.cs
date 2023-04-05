@@ -8,6 +8,7 @@ namespace SEDC.Generics.Domain.Models
 {
     public class GenericDb<T> where T : BaseEntity
     {
+        //Convection for private _text
         private List<T> _list { get; set; } = new List<T>();
         public GenericDb()
         {
@@ -17,7 +18,7 @@ namespace SEDC.Generics.Domain.Models
         {
             foreach (T item in _list)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(item.GetInfo());
             }
         }
 
@@ -30,6 +31,11 @@ namespace SEDC.Generics.Domain.Models
         public T GetById(int id)
         {
             return _list.FirstOrDefault(x=> x.Id == id);
+        }
+
+        public T GetByIndex(int index)
+        {
+            return _list[index];
         }
 
         public void Remove(int id)

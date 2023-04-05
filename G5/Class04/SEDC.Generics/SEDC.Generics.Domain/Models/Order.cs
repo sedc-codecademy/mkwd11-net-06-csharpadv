@@ -12,7 +12,7 @@ namespace SEDC.Generics.Domain.Models
         public string Address { get; set; }
         public override string GetInfo()
         {
-            return $"{Id}) {Address}";  
-         }
+            return $"{Id}) {Address} - {Receiver}";  
+        }
     }
 }
