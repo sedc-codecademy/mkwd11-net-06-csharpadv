@@ -27,7 +27,7 @@ namespace AbstractClassesAndInterfaces.Entities.Classes
             result += AWSCertified || AzureCertified ? "" : "No certificates yet";
             return result;
         }
-        public bool CheckInfrastucture(int status)
+        public bool CheckInfrastructure(int status)
         {
             List<int> okStatuses = new List<int>() { 200, 202, 204 };
             if (okStatuses.Contains(status))

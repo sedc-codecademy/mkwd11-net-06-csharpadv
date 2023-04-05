@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace AbstractClassesAndInterfaces.Entities.Classes
 {
-    public class QAEngenier : Human, IDeveloper, ITester
+    public class QAEngineer : Human, IDeveloper, ITester
     {
         public List<string> TestingFrameworks { get; set; }
 
-        public QAEngenier(string fullname,
+        public QAEngineer(string fullname,
                          int age, long phone,
                          List<string> frameworks) : base(fullname, age, phone)
         {

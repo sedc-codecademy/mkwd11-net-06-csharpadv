@@ -8,6 +8,6 @@ namespace AbstractClassesAndInterfaces.Entities.Interfaces
 {
     public interface IOperations
     {
-        bool CheckInfrastucture(int status);
+        bool CheckInfrastructure(int status);
     }
 }

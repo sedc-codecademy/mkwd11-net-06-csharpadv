@@ -18,7 +18,7 @@ namespace AbstractClassesAndInterfaces.Entities.Classes
             Projects = projects;
         }
 
-        public bool CheckInfrastucture(int status)
+        public bool CheckInfrastructure(int status)
         {
             if (status.ToString().StartsWith("4")) 
             {
