@@ -25,6 +25,7 @@ namespace SEDC.Generics.Domain.Models
         public void Insert(T item)
         {
             _list.Add(item);
+            //item.GetType().Name is a C# code that retrieves the type of the object item and returns its name as a string.
             Console.WriteLine($"Item was added in the {item.GetType().Name} Db");
         }
 
@@ -37,7 +38,6 @@ namespace SEDC.Generics.Domain.Models
         {
             return _list[index];
         }
-
         public void Remove(int id)
         {
             T item = _list.FirstOrDefault(x => x.Id == id);
