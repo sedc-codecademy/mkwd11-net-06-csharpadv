@@ -12,5 +12,6 @@ namespace SEDC.Generics.Domain.Models
         public int Id { get; set; }
 
         public abstract string GetInfo();
+
     }
 }
