@@ -3,12 +3,15 @@
 Create an interfaces called IUser, IStudent, ITeacher​
 
 IUser : PrintUser() - Prints Id, Name and Username​
+
 User: Id, Name, Username, Password,
 
 IStudent: override PrintUser() to show grades​
+
 Student: Grades
 
 ITeacher: override PrintUser() to show subject​
+
 Teacher: Subject
 
 Create an abstract class User and inherits from IUser​
