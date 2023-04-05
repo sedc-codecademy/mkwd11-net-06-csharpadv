@@ -8,11 +8,11 @@ User: Id, Name, Username, Password, PrintUser() as abstract method
 
 IStudent: signature of PringGrades() 
 
-Student: Grades, override PrintUser() - to show Name, username and Average grade
+Student: Grades, override PrintUser() - to show Name, Username and average grade
 
-ITeacher: signature of PrintSubjects 
+ITeacher: signature of PrintSubjects()
 
-Teacher: Subject, override PrintUser() to show Name, username and number of subjects
+Teacher: Subject, override PrintUser() to show Name, Username and number of subjects
 
 Create an abstract class User and inherits from IUser​
 
