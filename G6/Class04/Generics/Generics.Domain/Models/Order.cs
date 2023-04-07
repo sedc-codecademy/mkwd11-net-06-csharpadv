@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SEDC.Generics.Domain.Models
+namespace Generics.Domain.Models
 {
     public class Order : BaseEntity
     {
-        public string Receiver { get; set; }
+        public string OrderedBy { get; set; }
         public string Address { get; set; }
         public override string GetInfo()
         {
-            return $"{Id}) {Address} - {Receiver}";  
+            return $"{OrderedBy} - {Address}";
         }
     }
 }
