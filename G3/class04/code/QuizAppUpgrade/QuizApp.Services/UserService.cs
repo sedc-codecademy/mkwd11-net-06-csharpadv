@@ -1,9 +1,10 @@
 ﻿using QuizApp.Domain;
 using QuizApp.Domain.Models;
+using QuizApp.Services.Abstraction;
 
 namespace QuizApp.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
         public Student GetStudentByUsername(string username) 
         {

@@ -1,14 +1,10 @@
 ﻿using QuizApp.Domain;
 using QuizApp.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using QuizApp.Services.Abstraction;
 
 namespace QuizApp.Services
 {
-    public class QuizService
+    public class QuizService : IQuizService
     {
         public void TakeQuiz(Student student) 
         {
