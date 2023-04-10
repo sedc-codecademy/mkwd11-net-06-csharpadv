@@ -47,3 +47,29 @@ User.PrintUserCount();
 #endregion
 
 
+
+#region Boxing and Unboxxing
+
+// Boxing an integer in to a more universal type, object
+// All value types derive from object
+// That is why we can box any value type in to object
+
+int number1 = 9000;
+object obj1 = number1;
+Console.WriteLine(obj1); // works
+
+// Unboxing an object back in to integer
+// Since an object variable can hold any value we can try and unbox it to a specific type
+object obj2 = 90000;
+int number2 = (int)obj2; // -> This change of type is called casting
+Console.WriteLine(number2); // works
+Console.ReadLine();
+
+object numInString = "10";
+int numberFromString = (int)numInString;
+
+
+object user = new User(1, "Test", "Test");
+User u = (User)user;
+
+#endregion
