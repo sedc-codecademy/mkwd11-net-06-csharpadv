@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace QuizApp.Services
 {
-    public class UserServiceWithEntity : IUserService
+    public class UserServiceFromRealDb : IUserService
     {
         public Student GetStudentByUsername(string username)
         {
