@@ -68,9 +68,11 @@ namespace TryBeingFit.Models.Database
         //Program.cs;
         //lv = ltDatabase.GetById(2); => {2, "Jump and Jacks", 30 }
         //lv.Duration = 60;
+        //ltDatabase.Update(lv) => {2, "Jump and Jacks", 60 }
         public void Update(T entity)
         {
             //firstly find the item in the list
+            //original value => {2, "Jump and Jacks", 30 }
             T item = _dataset.FirstOrDefault(x => x.Id == entity.Id);
 
             if (item == null)
@@ -79,6 +81,7 @@ namespace TryBeingFit.Models.Database
             }
 
             //if the item exists, then by changing its value in the varaible, we are changing the list item;
+            //originalValue = {2, "Jump and Jacks", 60 }
             item = entity;
         }
     }
