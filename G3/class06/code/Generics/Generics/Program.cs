@@ -9,7 +9,6 @@ var listHelper = new NoneGenericListHelper();
 listHelper.GoTroughSrings(strings);
 listHelper.GoTroughIntegers(ints);
 
-
 var genericListHelperForStrings = new GenericListHeper<string>();
 genericListHelperForStrings.GetInfoFor(strings);
 
