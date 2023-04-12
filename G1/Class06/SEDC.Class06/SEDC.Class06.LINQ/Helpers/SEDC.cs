@@ -1,6 +1,6 @@
 ﻿using SEDC.Class06.LINQ.Entities;
 
-namespace SEDC.Class06.LINQ.Helpers
+namespace SEDC.LINQ
 {
     public static class SEDC
     {

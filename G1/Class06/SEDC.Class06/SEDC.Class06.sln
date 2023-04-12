@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.Class06.Anonymous", "SEDC.Class06.Anonymous\SEDC.Class06.Anonymous.csproj", "{3EA56F41-7DDC-4ABB-AF44-8FF06A57FEC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.Class06.LINQ", "SEDC.Class06.LINQ\SEDC.Class06.LINQ.csproj", "{68450FC5-B848-4A6A-8C3C-CFFD11678D28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3EA56F41-7DDC-4ABB-AF44-8FF06A57FEC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EA56F41-7DDC-4ABB-AF44-8FF06A57FEC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EA56F41-7DDC-4ABB-AF44-8FF06A57FEC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68450FC5-B848-4A6A-8C3C-CFFD11678D28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68450FC5-B848-4A6A-8C3C-CFFD11678D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68450FC5-B848-4A6A-8C3C-CFFD11678D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68450FC5-B848-4A6A-8C3C-CFFD11678D28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
