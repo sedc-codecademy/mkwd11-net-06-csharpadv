@@ -53,11 +53,43 @@ List<Person> people = new List<Person>()
 
 #endregion
 
-// TODO
-
+// Solution
 // Find and print all persons firstnames starting with 'R', ordered by Age - DESCENDING ORDER
+List<string> s1 = people
+    .OrderByDescending(x => x.Age)
+    .Select(x => x.FirstName)
+    .Where(x => x.StartsWith("R"))
+    .ToList();
+
 // Find and print all brown dogs names and ages older than 3 years, ordered by Age - ASCENDING ORDER
+List<string> s2 = dogs
+    .Where(x => x.Color == "Brown" && x.Age > 3)
+    .OrderBy(x => x.Age)
+    .Select(x => $"{x.Name} {x.Age}")
+    .ToList();
+
 // Find and print all persons with more than 2 dogs, ordered by Name - DESCENDING ORDER
+List<Person> s3 = people
+    .Where(x => x.Dogs.Count > 2)
+    .OrderByDescending(x => x.FirstName)
+    .ToList();
+
 // Find and print all Freddy`s dogs names older than 1 year
+List<string> s4 = people
+    .Single(x => x.FirstName == "Freddy").Dogs
+    .Where(x => x.Age > 1)
+    .Select(x => x.Name)
+    .ToList();
+
 // Find and print Nathen`s first dog
+Dog s5 = people
+   .Single(x => x.FirstName == "Nathen").Dogs
+   .First();
+
 // Find and print all white dogs names from Cristofer, Freddy, Erin and Amelia, ordered by Name - ASCENDING ORDER
+List<string> s6 = people
+    .Where(x => x.FirstName == "Cristofer" || x.FirstName == "Freddy" || x.FirstName == "Erin" || x.FirstName == "Amelia")
+    .SelectMany(x => x.Dogs)
+    .OrderBy(x => x.Name)
+    .Select(x => x.Name)
+    .ToList();
