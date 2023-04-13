@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQExercise", "LINQExercise\LINQExercise.csproj", "{D13BA15B-618F-4257-939A-92CA959F703B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQExercise.Domain", "LINQExercise.Domain\LINQExercise.Domain.csproj", "{05DAD4CD-9538-4F43-922E-3BEA50EC8EFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D13BA15B-618F-4257-939A-92CA959F703B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D13BA15B-618F-4257-939A-92CA959F703B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D13BA15B-618F-4257-939A-92CA959F703B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D13BA15B-618F-4257-939A-92CA959F703B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05DAD4CD-9538-4F43-922E-3BEA50EC8EFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05DAD4CD-9538-4F43-922E-3BEA50EC8EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05DAD4CD-9538-4F43-922E-3BEA50EC8EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05DAD4CD-9538-4F43-922E-3BEA50EC8EFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4598FE2D-3210-4023-BE3B-889C01997832}
+	EndGlobalSection
+EndGlobal
