@@ -23,5 +23,15 @@ namespace TryBeingFit.Models
             Email = email;
             Phone = phone;
         }
+
+        public bool PasswordMatch(string password)
+        {
+            return Password == password;
+        }
+
+        public void ChangePassword(string password)
+        {
+            Password = password;
+        }
     }
 }

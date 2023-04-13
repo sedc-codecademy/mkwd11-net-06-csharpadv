@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TryBeingFit.Models.Database
+﻿namespace TryBeingFit.Models.Database
 {
     // ltDatabase = new Database<LiveTraining>();
     // LiveTraining l1 = new LiveTraingin....;
@@ -82,7 +76,8 @@ namespace TryBeingFit.Models.Database
 
             //if the item exists, then by changing its value in the varaible, we are changing the list item;
             //originalValue = {2, "Jump and Jacks", 60 }
-            item = entity;
+            int indexOfElement = _dataset.IndexOf(item);
+            _dataset[indexOfElement] = entity;
         }
     }
 }
