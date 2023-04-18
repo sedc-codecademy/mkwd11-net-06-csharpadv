@@ -1,7 +1,9 @@
 ﻿using Models;
 using Models.Enum;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace AdvanceLinq_Demo
 {
@@ -75,7 +77,7 @@ namespace AdvanceLinq_Demo
             //}).ToList();
 
             List<string> resultQ2Formatted = dogs.Where(x => x.Color == "Brown" && x.Age > 3).OrderBy(x => x.Age).Select(x =>
-            {                
+            {
                 return $"{x.Name} - {x.Age}";
             }).ToList();
 
@@ -94,6 +96,54 @@ namespace AdvanceLinq_Demo
             {
                 Console.WriteLine(x.Name);
             });
+
+            //Find and print Nathen`s first dog
+            Person nathen = people.First(x => x.FirstName == "Nathen");
+            Dog nathenDog = nathen.Dogs.First();
+            Console.WriteLine(nathenDog.GetInfo());
+
+            //Find and print all white dogs names from Cristofer, Freddy, Erin and Amelia, ordered by Name - ASCENDING ORDER
+            //List<Person> subsetPeople = people.Where(x => x.FirstName == "Cristofer" || x.FirstName == "Freddy" || x.FirstName == "Erin" || x.FirstName == "Amelia").ToList();
+
+            //List<Dog> whiteDogs = new List<Dog>();
+
+            //foreach (Person person in subsetPeople)
+            //{
+            //    List<Dog> whiteDogsSubset = person.Dogs.Where(x => x.Color == "White").ToList();
+
+            //    whiteDogs.AddRange(whiteDogsSubset);
+            //}
+
+            //foreach(Dog d in whiteDogs.OrderBy(x => x.Name))
+            //{
+            //    Console.WriteLine(d.Name);
+            //}
+
+            //List<Dog> dogsOf4People = people.Where(x => x.FirstName == "Cristofer" || x.FirstName == "Freddy" || x.FirstName == "Erin" || x.FirstName == "Amelia").SelectMany(x => x.Dogs).ToList();
+
+            //List<Dog> whiteDogsOf4People = people.Where(x => x.FirstName == "Cristofer" 
+            //                                                || x.FirstName == "Freddy" 
+            //                                                || x.FirstName == "Erin" 
+            //                                                || x.FirstName == "Amelia")
+            //                                      .SelectMany(x => x.Dogs)
+            //                                      .Where(x => x.Color == "White")
+            //                                      .ToList();
+
+            //1. Filter only 4 people out of all people
+            //2. Get only the dogs using the SelectMany for the filtered people, and merge them in one result list => All dogs for the 4 selected people
+            //3. Filter the result list of all dogs to get only the white once
+            //4. Order the result list of white dogs by dog's name, asc
+            //5. ToList() => execute the query and get the result list
+            //6. Iterate trough the list of white dogs ordered by name, and print them.
+            people.Where(x => x.FirstName == "Cristofer"
+                           || x.FirstName == "Freddy"
+                           || x.FirstName == "Erin"
+                           || x.FirstName == "Amelia")
+                 .SelectMany(x => x.Dogs)
+                 .Where(x => x.Color == "White")
+                 .OrderBy(x => x.Name)
+                 .ToList()
+                 .ForEach(x => Console.WriteLine(x.Name));
         }
 
         static void PrintPeople(List<Person> list)
