@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TaxiManagerApp9000.Services\TaxiManagerApp9000.Services.csproj" />
+  </ItemGroup>
+
 </Project>
