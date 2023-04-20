@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TaxiManagerApp9000.Helpers\TaxiManagerApp9000.Helpers.csproj" />
     <ProjectReference Include="..\TaxiManagerApp9000.Services\TaxiManagerApp9000.Services.csproj" />
   </ItemGroup>
 
