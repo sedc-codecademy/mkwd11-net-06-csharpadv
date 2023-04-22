@@ -1,0 +1,5 @@
+Hello batinja
+I am writing in the file with StreamWriter batinja !
+Bye batinja
+Hello batinja we are in the USING
+bye bye bye
