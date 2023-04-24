@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSystem", "FileSystem\FileSystem.csproj", "{0A859348-F471-4ED3-948D-1BDE472CD74A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileStreams", "FileStreams\FileStreams.csproj", "{AB8B82BB-68A6-43C7-900D-C36235431E6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logger", "Logger\Logger.csproj", "{9EA4E224-DE66-4FE6-80BC-CD6C1C6B29ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A859348-F471-4ED3-948D-1BDE472CD74A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A859348-F471-4ED3-948D-1BDE472CD74A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A859348-F471-4ED3-948D-1BDE472CD74A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A859348-F471-4ED3-948D-1BDE472CD74A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB8B82BB-68A6-43C7-900D-C36235431E6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB8B82BB-68A6-43C7-900D-C36235431E6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB8B82BB-68A6-43C7-900D-C36235431E6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB8B82BB-68A6-43C7-900D-C36235431E6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EA4E224-DE66-4FE6-80BC-CD6C1C6B29ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA4E224-DE66-4FE6-80BC-CD6C1C6B29ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA4E224-DE66-4FE6-80BC-CD6C1C6B29ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA4E224-DE66-4FE6-80BC-CD6C1C6B29ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BEAB0DDE-B547-4344-9E54-6129C602AEB1}
+	EndGlobalSection
+EndGlobal

@@ -1,15 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TaxiManagerApp9000.Helpers\TaxiManagerApp9000.Helpers.csproj" />
-    <ProjectReference Include="..\TaxiManagerApp9000.Services\TaxiManagerApp9000.Services.csproj" />
+    <ProjectReference Include="..\TryBeingFit.Models\TryBeingFit.Models.csproj" />
   </ItemGroup>
 
 </Project>

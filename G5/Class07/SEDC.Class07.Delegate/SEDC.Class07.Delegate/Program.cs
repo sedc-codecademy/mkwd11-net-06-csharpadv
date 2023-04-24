@@ -39,6 +39,15 @@ void Number(int num1, int num2, NumbersDelegate numbersDelegate)
 }
 
 Number(1, 2, (x, y) => x + y);
+Number(45, 20, (x, y) => x - y);
+Number(23, 10, (x, y) =>
+{
+    if (x > y)
+    {
+        return x;
+    }
+    return y;
+});
 
 // Declaring delegates
 // This is the signature of any method that we want this delegate to point to
