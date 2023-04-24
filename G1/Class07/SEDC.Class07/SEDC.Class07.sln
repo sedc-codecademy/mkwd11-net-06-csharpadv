@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.Delegates", "SEDC.Delegates\SEDC.Delegates.csproj", "{7A6DAFD7-7A56-43BC-83B9-367F36D84DB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SEDC.Delegates", "SEDC.Delegates\SEDC.Delegates.csproj", "{7A6DAFD7-7A56-43BC-83B9-367F36D84DB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.PublisherSubscriber", "SEDC.PublisherSubscriber\SEDC.PublisherSubscriber.csproj", "{5810CEC0-6867-4DAF-B451-3FEED7595340}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.WinFormsApp", "SEDC.WinFormsApp\SEDC.WinFormsApp.csproj", "{49FE68AB-7FED-40A1-B77A-E463B326076D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{7A6DAFD7-7A56-43BC-83B9-367F36D84DB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A6DAFD7-7A56-43BC-83B9-367F36D84DB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A6DAFD7-7A56-43BC-83B9-367F36D84DB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5810CEC0-6867-4DAF-B451-3FEED7595340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5810CEC0-6867-4DAF-B451-3FEED7595340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5810CEC0-6867-4DAF-B451-3FEED7595340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5810CEC0-6867-4DAF-B451-3FEED7595340}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49FE68AB-7FED-40A1-B77A-E463B326076D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49FE68AB-7FED-40A1-B77A-E463B326076D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49FE68AB-7FED-40A1-B77A-E463B326076D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49FE68AB-7FED-40A1-B77A-E463B326076D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
