@@ -71,3 +71,37 @@ Console.WriteLine(isNameEmpty());
 Console.WriteLine(isListEmpty(names));
 Console.WriteLine(sum(5, 10));
 Console.WriteLine(checkIfLarger(4, 8));
+
+
+// Exercise
+
+static int Calculate(int num1, int num2, Func<int, int, int> calculateFunc) 
+{
+    return calculateFunc(num1, num2);
+}
+
+Console.WriteLine(Calculate(10, 5, (number1, number2) => number1 + number2));
+Calculate(10, 5, (number1, number2) => number1 - number2);
+Calculate(10, 5, (number1, number2) => number1 / number2);
+Calculate(10, 5, (number1, number2) => number1 * number2);
+
+
+//Higher Order Funcion Use
+
+
+string foundBob = names.Find((name) => name == "Bob");
+Console.WriteLine(foundBob);
+
+Func<string, bool> isBob = x => x == "Bob";
+string foundBob2 = names.FirstOrDefault(isBob);
+Console.WriteLine(foundBob2);
+
+Func<string, bool> startsWithJ = x => x.StartsWith("J");
+List<string> letterJNames = names.Where(startsWithJ).ToList();
+
+Console.WriteLine("====");
+
+foreach (var name in letterJNames)
+{
+    Console.WriteLine(name);
+}
