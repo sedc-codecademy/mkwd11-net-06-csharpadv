@@ -1,0 +1,15 @@
+test manual dispose one
+test manual dispose two
+using block dispose one
+using block dispose two
+custom dispose writer one
+custom dispose writer two
+test
+test
+test
+test
+test
+test
+custom test
+custom test one
+custom test two
