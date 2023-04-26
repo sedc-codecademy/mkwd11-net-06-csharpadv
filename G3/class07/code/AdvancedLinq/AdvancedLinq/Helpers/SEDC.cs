@@ -15,6 +15,7 @@ namespace AdvancedLinq.Helpers
             new Student(22, "Jill", "Wayne", 36, true),
             new Student(27, "Greg", "Gregsky", 45, false),
             new Student(29, "Anne", "Willson", 31, true),
+            new Student(29, "Anne", "Willson", 21, true),
             new Student(30, "Liana", "Wurtz", 25, false),
             new Student(41, "Bill", "Zu", 38, false)
         };
