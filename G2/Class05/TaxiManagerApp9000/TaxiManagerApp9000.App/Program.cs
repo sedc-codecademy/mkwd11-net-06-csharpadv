@@ -4,6 +4,7 @@ using TaxiManagerApp9000.Helpers;
 using TaxiManagerApp9000.Services;
 
 UserService userService = new UserService();
+CarService carService = new CarService();
 
 User user1 = new User("admin", "admin", Role.Administrator);
 User user2 = new User("manager", "manager", Role.Manager);
