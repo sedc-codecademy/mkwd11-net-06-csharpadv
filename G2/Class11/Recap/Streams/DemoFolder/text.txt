@@ -1,0 +1,2 @@
+I hope that now everything is clear about the StreamReader and StreamWriter
+Please study at home
