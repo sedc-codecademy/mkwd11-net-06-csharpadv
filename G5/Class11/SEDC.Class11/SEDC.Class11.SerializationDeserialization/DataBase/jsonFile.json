@@ -1,0 +1,14 @@
+[
+  {
+    "FirstName": "Mitko",
+    "LastName": "Veljusliev",
+    "Age": 39,
+    "IsLazy": false
+  },
+  {
+    "FirstName": "Dimitar",
+    "LastName": "Milkovski",
+    "Age": 27,
+    "IsLazy": false
+  }
+]
