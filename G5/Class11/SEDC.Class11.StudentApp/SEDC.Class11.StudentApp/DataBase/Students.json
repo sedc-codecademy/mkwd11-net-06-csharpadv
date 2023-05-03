@@ -1,0 +1,37 @@
+[
+  {
+    "FirstName": "Ana",
+    "LastName": "Markovska",
+    "Age": 20,
+    "IsLazy": true,
+    "Id": 1
+  },
+  {
+    "FirstName": "Marko",
+    "LastName": "Markovski",
+    "Age": 22,
+    "IsLazy": true,
+    "Id": 2
+  },
+  {
+    "FirstName": "Bojan",
+    "LastName": "Petrovski",
+    "Age": 23,
+    "IsLazy": false,
+    "Id": 3
+  },
+  {
+    "FirstName": "Dragisha",
+    "LastName": "Todoroski",
+    "Age": 24,
+    "IsLazy": true,
+    "Id": 4
+  },
+  {
+    "FirstName": "Dragisha",
+    "LastName": "Todoroski",
+    "Age": 24,
+    "IsLazy": true,
+    "Id": 5
+  }
+]
