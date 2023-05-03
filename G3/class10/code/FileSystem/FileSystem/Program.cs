@@ -63,13 +63,37 @@ if (!File.Exists(filePath))
 
 // delete a file 
 
-Console.WriteLine("press enter to delete text.txt..");
-Console.ReadLine();
+//Console.WriteLine("press enter to delete text.txt..");
+//Console.ReadLine();
+
+//if (File.Exists(filePath)) 
+//{
+//    File.Delete(filePath);
+//    Console.WriteLine("A file was deleted!");
+//}
+
+// writing in a file
 
 if (File.Exists(filePath)) 
 {
-    File.Delete(filePath);
-    Console.WriteLine("A file was deleted!");
+    string text = "Hello SEDC! We are writing in a file";
+    File.WriteAllText(filePath, text);
+    Console.WriteLine("Successfully writen in a file!");
+}
+
+if (File.Exists(filePath)) 
+{
+    string text = "Hello SEDC! We are writing in a file";
+    File.WriteAllText(filePath, text);
+    Console.WriteLine("Successfully writen in a file!");
+}
+
+// read from file
+if (File.Exists(filePath)) 
+{
+    string fileContent = File.ReadAllText(filePath);
+    Console.WriteLine("This is the context in the text file:");
+    Console.WriteLine(fileContent);
 }
 
 
