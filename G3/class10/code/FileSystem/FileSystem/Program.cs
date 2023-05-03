@@ -73,7 +73,6 @@ if (!File.Exists(filePath))
 //}
 
 // writing in a file
-
 if (File.Exists(filePath)) 
 {
     string text = "Hello SEDC! We are writing in a file";
