@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace SEDC.SerializationDeserialization.Entities
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        [JsonProperty("Student_Age")]
         public int Age { get; set; }
         public bool IsPartTime { get; set; }
     }
