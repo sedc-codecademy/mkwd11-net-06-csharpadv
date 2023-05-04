@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Class11_DatabaseJsonDemo
+namespace Class11_Exercise01
 {
     public class Database<T> where T : BaseEntity
     {
@@ -13,12 +13,12 @@ namespace Class11_DatabaseJsonDemo
             //typeof gives you the 'metadata' for the class that is send as T, that 'metadata' contains T class Name
             _filePath = _folderPath + $@"\{typeof(T).Name}s.json";
 
-            if(!Directory.Exists(_folderPath))
+            if (!Directory.Exists(_folderPath))
             {
                 Directory.CreateDirectory(_folderPath);
             }
 
-            if(!File.Exists(_filePath))
+            if (!File.Exists(_filePath))
             {
                 File.Create(_filePath).Close();
             }
@@ -29,7 +29,7 @@ namespace Class11_DatabaseJsonDemo
         {
             try
             {
-                using(StreamReader sr = new StreamReader(_filePath))
+                using (StreamReader sr = new StreamReader(_filePath))
                 {
                     string content = sr.ReadToEnd();
                     List<T> result = JsonConvert.DeserializeObject<List<T>>(content);
