@@ -1,6 +1,3 @@
-text4
-text 5
-text 7
-dsa
-dsa
-dsa
+text 1
+text 2
+text 3
