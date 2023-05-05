@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Threads", "Threads\Threads.csproj", "{865A622B-B2E8-44D0-9782-A8F0F41818E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tasks", "Tasks\Tasks.csproj", "{93F37FA4-4123-4D12-A171-20472C234AEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncAwait", "AsyncAwait\AsyncAwait.csproj", "{AB2CCB32-42C5-4D0C-9D58-A8803B23AE53}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{865A622B-B2E8-44D0-9782-A8F0F41818E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{865A622B-B2E8-44D0-9782-A8F0F41818E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{865A622B-B2E8-44D0-9782-A8F0F41818E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{865A622B-B2E8-44D0-9782-A8F0F41818E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93F37FA4-4123-4D12-A171-20472C234AEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93F37FA4-4123-4D12-A171-20472C234AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93F37FA4-4123-4D12-A171-20472C234AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93F37FA4-4123-4D12-A171-20472C234AEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB2CCB32-42C5-4D0C-9D58-A8803B23AE53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB2CCB32-42C5-4D0C-9D58-A8803B23AE53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB2CCB32-42C5-4D0C-9D58-A8803B23AE53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB2CCB32-42C5-4D0C-9D58-A8803B23AE53}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98C7E605-782C-4488-9A7C-4C102B100446}
+	EndGlobalSection
+EndGlobal
