@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SEDC.TryBeingFit.Domain.Interfaces
+namespace SEDC.TryBeingFit.Domain.Enums
 {
-    public interface IVideoTraining
+    public enum UserType
     {
-        void UpdateRating(int grade);
+        StandardUser = 1,
+        PremiumUser,
+        Trainer
     }
 }

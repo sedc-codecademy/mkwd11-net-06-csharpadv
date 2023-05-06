@@ -9,16 +9,22 @@ namespace SEDC.TryBeingFit.Domain.Models
 
         public Trainer()
         {
-            Role = UserRole.Trainer;
-        }
-        public override string GetInfo()
-        {
-            return $"{FirstName} {LastName} - {YearsOfExperience} years of experience";
+            UserType = UserType.Trainer;
         }
 
-        public void Reschedule(LiveTraining liveTraining, int days)
+        public void Reschedule(LiveTraining liveTraining, int hoursToReschedule)
         {
-            liveTraining.NextSession = liveTraining.NextSession.AddDays(days);
+            //validate if it is his training
+            if(liveTraining.Trainer.Username != Username)
+            {
+                throw new Exception($"Training: {liveTraining.Title} does not belong to {Username}");
+            }
+            liveTraining.NextSession = liveTraining.NextSession.AddHours(hoursToReschedule);
+        }
+
+        public override string GetInfo()
+        {
+            return $"{FirstName} {LastName} has {YearsOfExperience}";
         }
     }
 }

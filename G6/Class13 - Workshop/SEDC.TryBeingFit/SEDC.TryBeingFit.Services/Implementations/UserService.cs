@@ -1,83 +1,99 @@
 ﻿using SEDC.TryBeingFit.Domain.Database;
+using SEDC.TryBeingFit.Domain.DbInterfaces;
 using SEDC.TryBeingFit.Domain.Models;
 using SEDC.TryBeingFit.Services.Helpers;
 using SEDC.TryBeingFit.Services.Interfaces;
-using System;
-using System.Linq;
 
 namespace SEDC.TryBeingFit.Services.Implementations
 {
     public class UserService<T> : IUserService<T> where T : User
     {
-        private IDatabase<T> _database;
+        //always make the classes dependent on interface (dependent on signatures)
+        //this way we will be able to provide different implementations that implement that interface
+        private Domain.Database.IDatabase<T> _database;
+
         public UserService()
         {
-            //_database = new Database<T>(); //in memory db (list)
-            _database = new FileDatabase<T>();
+            //we can always assign an object from a class that implements an interface to a variable 
+            //with type interface (new Database() -> IDatabase)
+            _database = new Domain.Database.IDatabase<T>();
         }
-
-        public T ChangeInfo(int userId, string firstName, string lastName)
+        public T Register(T newObject)
         {
-            T userDb = GetById(userId);
-            if(!ValidationHelper.ValidateName(firstName) || !ValidationHelper.ValidateName(lastName))
+            //1. validate new user data
+
+            //firstName and LastName to have more than 2 characters
+            //username to have more than 6 characters
+            //password to have more than 6 characters and at least one number
+
+            if (!ValidationHelper.ValidateName(newObject.FirstName))
             {
-                MessageHelper.PrintMessage("[Error] Invalid user data", ConsoleColor.Red);
-                return null;
+                throw new Exception("Invalid first name value");
             }
-            userDb.FirstName = firstName;
-            userDb.LastName = lastName;
-            _database.Update(userDb);
-            MessageHelper.PrintMessage($"User with id {userId} was successfully updated", ConsoleColor.Green);
-            return _database.GetbyId(userId);
+
+            if (!ValidationHelper.ValidateName(newObject.LastName))
+            {
+                throw new Exception("Invalid last name value");
+            }
+
+            if (!ValidationHelper.ValidateUsername(newObject.Username))
+            {
+                throw new Exception("Invalid userName value");
+            }
+
+            if (!ValidationHelper.ValidatePassword(newObject.Password))
+            {
+                throw new Exception("Invalid password value");
+            }
+
+
+            //2. insert into the db
+            int newId = _database.Add(newObject);
+
+            //3. return the newly added user from the db
+            T newUser = _database.GetById(newId);
+            return newUser;
         }
 
-        public void ChangePassword(int userId, string oldPassword, string newPassword)
+        public List<T> GetAll()
         {
-            T userDb = _database.GetbyId(userId);
-            if(userDb.Password != oldPassword)
+            List<T> items =  _database.GetAll();
+            return items;
+        }
+
+        public T Login(string username, string password)
+        {
+            //1. search through all users for a user with the given username and password
+
+            //1.1 get all users from db
+            List<T> allUsers = _database.GetAll();
+            //1.2 search
+            T userDb = allUsers.FirstOrDefault(x => x.Username == username && x.Password == password);
+
+            if(userDb == null)
+            {
+                throw new Exception("Wrong username or password");
+            }
+
+            return userDb;
+        }
+
+        public T ChangePassword(int userId, string oldPassword, string newPassword)
+        {
+            T userDb = _database.GetById(userId);
+            if (userDb.Password != oldPassword)
             {
                 throw new Exception("Old passwords do not match");
             }
-            if(!ValidationHelper.ValidatePassword(newPassword))
+            if (!ValidationHelper.ValidatePassword(newPassword))
             {
                 throw new Exception("Invalid password");
             }
             userDb.Password = newPassword;
             //send the object with the new values to the Update method of the database
             _database.Update(userDb);
-        }
 
-        public T GetById(int id)
-        {
-            return _database.GetbyId(id);
-        }
-
-        public T LogIn(string username, string password)
-        {
-            T userDb = _database.GetAll().FirstOrDefault(x => x.Username == username && x.Password == password);
-            if(userDb == null)
-            {
-                MessageHelper.PrintMessage($"[Error] User with username {username} does not exist.", ConsoleColor.Red);
-                return null;
-            }
             return userDb;
-        }
-
-        public T Register(T userModel)
-        {
-            if(!ValidationHelper.ValidateName(userModel.FirstName) || !ValidationHelper.ValidateName(userModel.LastName)
-                || !ValidationHelper.ValidateUsername(userModel.Username) || !ValidationHelper.ValidatePassword(userModel.Password))
-            {
-                MessageHelper.PrintMessage("[Error] User data is invalid", ConsoleColor.Red);
-                return null;
-            }
-            int id = _database.Insert(userModel);
-            return _database.GetbyId(id);
-        }
-
-        public void RemoveById(int id)
-        {
-            _database.RemoveById(id);
         }
     }
 }

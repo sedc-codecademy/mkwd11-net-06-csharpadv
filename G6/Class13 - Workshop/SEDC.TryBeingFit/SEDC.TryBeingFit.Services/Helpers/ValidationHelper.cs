@@ -1,48 +1,56 @@
-﻿namespace SEDC.TryBeingFit.Services.Helpers
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SEDC.TryBeingFit.Services.Helpers
 {
     public static class ValidationHelper
     {
-        public static bool ValidatePassword(string password)
-        {
-            if(password.Length < 6)
-            {
-                return false;
-            }
-            bool isNum = false;
-            foreach(char ch in password)
-            {
-                isNum = int.TryParse(ch.ToString(), out int num);
-                if (isNum)
-                    break;
-            }
-            if (!isNum)
-                return false;
-
-            return true;
-        }
-
-        public static bool ValidateUsername(string username)
-        {
-            if (username.Length < 6)
-                return false;
-            return true;
-        }
-
         public static bool ValidateName(string name)
         {
             if (name.Length < 2)
+            {
                 return false;
+            }
             return true;
         }
 
-        public static int ValidateNumber(string numberInput, int range)
+        public static bool ValidateUsername(string userName)
         {
-            bool isNumber = int.TryParse(numberInput, out int number);
-            if (!isNumber)
-                return -1;
-            if (number < 1 || number > range)
-                return -1;
-            return number;
+            if (userName.Length < 6)
+            { 
+                return false;
+            }
+            return true;
+        }
+
+        public static bool ValidatePassword(string password)
+        {
+            if (password.Length < 6)
+            {
+                return false;
+            }
+
+            //if(password.Contains("9") || password.Contains("8") ... )
+
+            //Test123 
+            foreach(char c in password)
+            {
+                bool isParsed = int.TryParse(c.ToString(), out int num);
+                if (isParsed)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public static bool ValidateTrainingDuration(double duration)
+        {
+            if (duration < 10)
+                return false;
+            return true;
         }
     }
 }
