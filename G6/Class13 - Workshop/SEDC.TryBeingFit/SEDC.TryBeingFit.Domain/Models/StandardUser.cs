@@ -1,25 +1,27 @@
 ﻿using SEDC.TryBeingFit.Domain.Enums;
-using System.Collections.Generic;
 
 namespace SEDC.TryBeingFit.Domain.Models
 {
+    //this way it will get inherited members fromBaseEntity (because User inherits from BaseEntity) + from User
     public class StandardUser : User
     {
-        public List<VideoTraining> VideoTrainings { get; set; }
+        List<VideoTraining> VideoTrainings { get; set; }
+
         public StandardUser()
         {
-            Role = UserRole.Standard;
+            UserType = UserType.StandardUser;
+            //avoid null
             VideoTrainings = new List<VideoTraining>();
         }
+
         public override string GetInfo()
         {
-            string result = $"{FirstName} {LastName}";
-            result += "\n Video trainings: \n";
-            foreach (VideoTraining videoTraining in VideoTrainings)
+            string info = $"{FirstName} {LastName} \n Video trainings: \n";
+            foreach(VideoTraining videoTraining in VideoTrainings)
             {
-                result += $" {videoTraining.Title} \n";
+                info += videoTraining.GetInfo() + "\n";
             }
-            return result;
+            return info;
         }
     }
 }

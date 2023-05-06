@@ -4,6 +4,6 @@ namespace SEDC.TryBeingFit.Domain.Interfaces
 {
     public interface ITrainer
     {
-        void Reschedule(LiveTraining liveTraining, int days);
+        void Reschedule(LiveTraining liveTraining, int hoursToReschedule);
     }
 }

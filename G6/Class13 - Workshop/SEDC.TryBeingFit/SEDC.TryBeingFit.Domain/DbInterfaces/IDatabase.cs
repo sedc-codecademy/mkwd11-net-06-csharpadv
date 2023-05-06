@@ -1,14 +1,13 @@
 ﻿using SEDC.TryBeingFit.Domain.Models;
-using System.Collections.Generic;
 
-namespace SEDC.TryBeingFit.Domain.Database
+namespace SEDC.TryBeingFit.Domain.DbInterfaces
 {
     public interface IDatabase<T> where T : BaseEntity
     {
         List<T> GetAll();
-        T GetbyId(int id);
-        int Insert(T entity);
-        void Update(T entity);
+        T GetById(int id);
+        int Add(T entity);
         void RemoveById(int id);
+        void Update(T entity);
     }
 }

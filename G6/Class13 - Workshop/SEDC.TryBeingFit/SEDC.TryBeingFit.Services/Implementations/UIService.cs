@@ -1,152 +1,142 @@
 ﻿using SEDC.TryBeingFit.Domain.Enums;
 using SEDC.TryBeingFit.Domain.Models;
-using SEDC.TryBeingFit.Services.Helpers;
 using SEDC.TryBeingFit.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SEDC.TryBeingFit.Services.Implementations
 {
     public class UIService : IUIService
     {
-        public List<string> MenuItems { get; set; }
-        public int ChooseMenuItem(List<string> menuItems)
+        public StandardUser FillRegisterData()
         {
-            while (true)
+            //ask for data
+            
+            string firstName = EnterData("first name");
+            string lastName = EnterData("last name");
+            string username = EnterData("username");
+            string password = EnterData("password");
+            string confirmedPassword = EnterData("confirm password");
+
+            if(password != confirmedPassword)
             {
-                
-                for (int i = 0; i < menuItems.Count; i++)
-                {
-                    Console.WriteLine($"[{i + 1}] {menuItems[i]}");
-                }
-                string input = Console.ReadLine();
-                int choice = ValidationHelper.ValidateNumber(input, menuItems.Count);
-                if (choice == -1)
-                {
-                    MessageHelper.PrintMessage("You must enter a valid option", ConsoleColor.Red);
-                    continue;
-                }
-                return choice;
+                throw new Exception("Passwords do not match");
             }
 
-        }
+            //if data is not empty create standard user that would be registered
 
-        public StandardUser FillNewUserData()
-        {
-            StandardUser standardUser = new StandardUser();
-
-            Console.WriteLine("Enter first name");
-            string firstName = Console.ReadLine();
-            if (string.IsNullOrEmpty(firstName))
+            StandardUser standardUser = new StandardUser()
             {
-                throw new Exception("You must enter first name");
-            }
-            Console.WriteLine("Enter last name");
-            string lastName = Console.ReadLine();
-            if (string.IsNullOrEmpty(lastName))
-            {
-                throw new Exception("You must enter last name");
-            }
-
-            Console.WriteLine("Enter username");
-            string username = Console.ReadLine();
-            if (string.IsNullOrEmpty(username))
-            {
-                throw new Exception("You must enter username");
-            }
-            Console.WriteLine("Enter password");
-            string password = Console.ReadLine();
-            if (string.IsNullOrEmpty(password))
-            {
-                throw new Exception("You must enter password");
-            }
-            standardUser.FirstName = firstName;
-            standardUser.LastName = lastName;
-            standardUser.Username = username;
-            standardUser.Password = password;
-
+                FirstName = firstName,
+                LastName = lastName,
+                Username = username,
+                Password = password
+            };
             return standardUser;
         }
 
-        public int LogInMenu()
+        public string MainMenu(UserType userType)
         {
-            List<string> menuItems = new List<string> { "LogIn", "Register" };
-            Console.WriteLine("Choose option");
-            return ChooseMenuItem(menuItems);
-        }
+            List<string> menuItems = new List<string>();
+            menuItems.Add("Account info");
+            menuItems.Add("Logout");
 
-        public int RoleMenu()
-        {
-            List<string> menuItems = Enum.GetNames(typeof(UserRole)).ToList(); //gets the names of members of UserRole enum
-            Console.WriteLine("Choose role");
-            return ChooseMenuItem(menuItems);
-        }
-
-        public int MainMenu(UserRole userRole)
-        {
-            MenuItems = new List<string>();
-            MenuItems.Add("Account");
-            MenuItems.Add("Log Out");
-
-            switch (userRole)
+            switch (userType)
             {
-                case UserRole.Standard:
-                    MenuItems.Add("Train");
-                    MenuItems.Add("Upgrade to Premium");
+                case UserType.StandardUser:
+                    menuItems.Add("Train");
+                    menuItems.Add("Upgrade to premium");
                     break;
-                case UserRole.Premium:
-                    MenuItems.Add("Train");
+                case UserType.PremiumUser:
+                    menuItems.Add("Train");
                     break;
-                case UserRole.Trainer:
-                    MenuItems.Add("Reschedule training");
+                case UserType.Trainer:
+                    menuItems.Add("Reschedule a training");
                     break;
+
             }
-            return ChooseMenuItem(MenuItems);
-        }
 
-        public int TrainMenu()
-        {
-            List<string> trainMenuItems = new List<string>() { "Video", "Live" };
-            return ChooseMenuItem(trainMenuItems);
-        }
+            int numInput = 0;
 
-        public int TrainMenuItems<T>(List<T> trainings) where T : Training
-        {
-            Console.WriteLine("Choose a training:");
-            return ChooseEntity(trainings);
-        }
-
-        public void UpgradeToPremiumInfo()
-        {
-            Console.WriteLine("Upgrade to premium offers:");
-            Console.WriteLine("* Live trainings");
-            Console.WriteLine("* Get discount in sport stores");
-        }
-        public int AccountMenu()
-        {
-            List<string> accountMenuItems = new List<string>() { "Change info", "Change password" };
-            return ChooseMenuItem(accountMenuItems);
-        }
-        private int ChooseEntity<T>(List<T> entities) where T: Training
-        {
             while (true)
             {
-                for (int i = 0; i < entities.Count; i++)
+                Console.WriteLine("Choose an option");
+                for (int i = 0; i < menuItems.Count; i++)
                 {
-                    Console.WriteLine($"[{i + 1}] {entities[i].GetInfo()}");
+                    Console.WriteLine($"{i + 1}. {menuItems[i]}");
                 }
+
                 string input = Console.ReadLine();
-                int choice = ValidationHelper.ValidateNumber(input, entities.Count);
-                if (choice == -1)
+
+                bool isNumber = int.TryParse(input, out numInput);
+                if (!isNumber)
                 {
-                    MessageHelper.PrintMessage("You must enter a valid option", ConsoleColor.Red);
+                    Console.WriteLine("You must enter a number");
                     continue;
                 }
-                return choice;
+
+                if (numInput < 1 || numInput > menuItems.Count)
+                {
+                    Console.WriteLine("Invalid option");
+                    continue;
+                }
+
+                break;
             }
+
+            return menuItems[numInput - 1];
+
         }
 
-        
+
+        public void GetChosenTraining<T>(List<T> trainingsFromDB) where T : Training
+        {
+            //show
+            int numInput = 0;
+            while (true)
+            {
+                Console.WriteLine("Choose a training");
+                for (int i = 0; i < trainingsFromDB.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {trainingsFromDB[i].Title}");
+                }
+
+                string input = Console.ReadLine();
+
+                bool isNumber = int.TryParse(input, out numInput);
+                if (!isNumber)
+                {
+                    Console.WriteLine("You must enter a number");
+                    continue;
+                }
+
+                if (numInput < 1 || numInput > trainingsFromDB.Count)
+                {
+                    Console.WriteLine("Invalid option");
+                    continue;
+                }
+
+                break;
+            }
+
+
+            T chosenTraining = trainingsFromDB[numInput - 1];
+            Console.WriteLine("You chose the following training:");
+            Console.WriteLine(chosenTraining.GetInfo());
+        }
+
+        private string EnterData(string field)
+        {
+            Console.WriteLine($"Enter {field}");
+            string data = Console.ReadLine();
+            if (string.IsNullOrEmpty(data))
+            {
+                throw new Exception($"You must enter {field}");
+            }
+            return data;
+        }
     }
 }

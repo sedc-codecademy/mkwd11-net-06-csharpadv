@@ -1,39 +1,89 @@
 ﻿using SEDC.TryBeingFit.Domain.Database;
+using SEDC.TryBeingFit.Domain.DbInterfaces;
 using SEDC.TryBeingFit.Domain.Models;
+using SEDC.TryBeingFit.Services.Helpers;
 using SEDC.TryBeingFit.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SEDC.TryBeingFit.Services.Implementations
 {
     public class TrainingService<T> : ITrainingService<T> where T : Training
     {
-        //this is from Domain project
-        private IDatabase<T> _database;
+        //Service communicates with db
+        private Domain.DbInterfaces.IDatabase<T> _database;
 
         public TrainingService()
         {
-            // _database = new Database<T>(); //- in memory db (list)
-            _database = new FileDatabase<T>();
+            _database = new Domain.Database.IDatabase<T>();
         }
-        public void AddTraining(T training)
+        public void AddTraining(T newTraining)
         {
-            //validations
-            if (string.IsNullOrEmpty(training.Title))
+            //1. validation
+            if (string.IsNullOrEmpty(newTraining.Title))
             {
-                throw new Exception("Title must not be empty");
+                throw new Exception("Title can not be empty");
             }
-            _database.Insert(training);
+            if (!ValidationHelper.ValidateTrainingDuration(newTraining.Duration))
+            {
+                throw new Exception("Duration must be at least 10 minutes");
+            }
+            if(newTraining.Trainer == null)
+            {
+                throw new Exception("Each training must have a trainer");
+            }
+
+
+            //2. insert into db
+            _database.Add(newTraining);
         }
 
-        public List<T> GetAllTrainings()
+        public List<T> GetAll()
         {
-            return _database.GetAll();
+            List<T> trainingsFromDB = _database.GetAll();
+            return trainingsFromDB;
         }
 
-        public T GetTraining(int id)
+        public void GetChosenTraining()
         {
-            return _database.GetbyId(id);
+            //get all trainings
+            List<T> trainingsFromDB = _database.GetAll();
+
+            //show
+            int numInput = 0;
+            while (true)
+            {
+                Console.WriteLine("Choose a training");
+                for (int i = 0; i < trainingsFromDB.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {trainingsFromDB[i].Title}");
+                }
+
+                string input = Console.ReadLine();
+
+                bool isNumber = int.TryParse(input, out numInput);
+                if (!isNumber)
+                {
+                    Console.WriteLine("You must enter a number");
+                    continue;
+                }
+
+                if (numInput < 1 || numInput > trainingsFromDB.Count)
+                {
+                    Console.WriteLine("Invalid option");
+                    continue;
+                }
+
+                break;
+            }
+
+            
+            T chosenTraining = trainingsFromDB[numInput - 1];
+            Console.WriteLine("You chose the following training:");
+            Console.WriteLine(chosenTraining.GetInfo());
         }
     }
 }
