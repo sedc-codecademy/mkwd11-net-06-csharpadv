@@ -19,7 +19,10 @@
 
         public void GoodCheckIfEven(int num1, int num2)
         {
-            // Continue here ...
+            if (num1 > 100 || num2 > 100) return;
+            if (num1 % 2 != 0 || num2 % 2 != 0) return;
+            if (num1 != num2) return;
+            Console.WriteLine("They are the same");
         }
     }
 }

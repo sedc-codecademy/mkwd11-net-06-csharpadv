@@ -1,4 +1,6 @@
-﻿// SOLID Principles
+﻿using SEDC.Class14.Principles.Solid;
+
+// SOLID Principles
 // SOLID is an acronym for five principles: 
 
 // Single Responsibility Principle
@@ -11,10 +13,10 @@
 
 
 
-// DRY(Don't Repeat Yourself)
+// DRY (Don't Repeat Yourself)
 
-// This principle emphasizes the elimination of code duplication.
-// It suggests that code should have a single, authoritative source of truth, and any piece of knowledge or functionality should have a single, unambiguous representation in the codebase.
+// The DRY principle is a rule that we need to avoid and try not to repeat implementation in our code.
+// Every piece of logic must have a single and unique representation in our code.
 
 
 
@@ -30,3 +32,7 @@
 
 // YAGNI encourages developers to avoid adding functionality or features until they are actually needed.
 // It advises against speculation and premature optimization, focusing instead on the current requirements and avoiding unnecessary complexity or bloat.
+
+
+LiskovSubstitutionAppBad liskovSubstitutionAppBad = new LiskovSubstitutionAppBad();
+liskovSubstitutionAppBad.Run();
