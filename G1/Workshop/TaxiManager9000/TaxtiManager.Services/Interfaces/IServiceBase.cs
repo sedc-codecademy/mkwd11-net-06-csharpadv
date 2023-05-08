@@ -8,5 +8,6 @@ namespace TaxiManager.Services.Interfaces
         T GetSingle(int id);
         void Add(T entity);
         void Remove(int id);
+        void Seed(List<T> entities);
     }
 }

@@ -23,7 +23,7 @@ namespace TaxiManager.DomainModels.Models
         public string LicensePlate { get; set; }
         public DateTime LicensePlateExpieryDate { get; set; }
         public List<Driver> AssignedDrivers { get; set; }
-
+        
 
         public ExpieryStatus IsLicenseExpired()
         {
