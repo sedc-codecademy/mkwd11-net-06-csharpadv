@@ -8,6 +8,7 @@
         public int id;
         public string name;
         public bool logged;
+
         public void printuser()
         {
             // ...code
@@ -20,7 +21,23 @@
 
     // Good Class Example
     // Continue Here ...
+    public class UserGood // If no access modifier specified by default it will be internal (properties & classes)
+    {
+        private readonly string _userPath = @"C:\users";
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public bool IsLogged { get; set; }
 
+        public void PrintUser()
+        {
+            // code ..
+        }
+
+        public void ChangeId(int newId)
+        {
+            Id = newId;
+        }
+    }
 
 
 
@@ -33,6 +50,11 @@
 
     // Good Exception Example
     // Continue Here ...
+    public class LoginException : Exception
+    {
+        // Code ...
+    }
+
 
 
 
@@ -47,7 +69,8 @@
     // Good Interface Example
     // Continue Here ...
 
-
-
-
+    public interface IVehicle
+    {
+        void Drive();
+    }
 }

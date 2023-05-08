@@ -17,7 +17,14 @@
 
         public void GoodLoop()
         {
-            // Continue here ...        
+            int stringsLength = strings.Count();
+            foreach (string name in strings)
+            {
+                if (name.Length == stringsLength)
+                {
+                    Console.WriteLine(name);
+                }
+            }
         }
     }
 }
