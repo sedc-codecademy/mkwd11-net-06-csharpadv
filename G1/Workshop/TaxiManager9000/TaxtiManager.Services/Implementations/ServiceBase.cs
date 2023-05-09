@@ -33,5 +33,12 @@ namespace TaxiManager.Services.Implementations
         {
             _db.DeleteById(id);
         }
+
+        public void Seed(List<T> entities)
+        {
+            if (_db.GetAll().Count > 0)
+                return;
+            entities.ForEach(x => _db.Insert(x));
+        }
     }
 }

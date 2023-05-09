@@ -23,6 +23,9 @@ namespace TaxiManager.DomainModels.Models
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string FullName => $"{FirstName} {LastName}";
+
+
         public Shift Shift { get; set; }
         public Car Car { get; set; }
         public string License { get; set; }
