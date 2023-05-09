@@ -11,14 +11,14 @@ namespace TaxiManagerApp9000.Services
 
         public BaseService()
         {
-            Db = new FileSystemDb<T>();
+            Db = new FileSystemDb<T>(); //HERE I TELL THE BASE SERVICE PROPERTY WITH THE NAME DB, that it will be of type FileSystemDb and with that I will be able to use all the Generic method inside of this service and the FileSystemDb !!!
         }
 
-        public bool Add(T entity)
+        public bool Add(T entity) //This adds the new entity to the Db, it can be USER/DRIVER/CAR
         {
             try
             {
-                Db.Add(entity);
+                Db.Add(entity); //This here is a reference to the Add method in what ? IN THE FILESYSTEMDB !!!
                 return true;
             }
             catch (Exception ex)
@@ -26,6 +26,7 @@ namespace TaxiManagerApp9000.Services
                 return false;
             }
         }
+        //The same from the previous comments goes for all the methods !!!
 
         public List<T> GetAll()
         {
@@ -42,6 +43,7 @@ namespace TaxiManagerApp9000.Services
             return Db.RemoveById(id);
         }
 
+        //THIS IS JUST FOR SEEDING DATA, i need some data to begin with so i'll just put some in !!!
         public void Seed(List<T> items)
         {
             List<T> data = Db.GetAll();

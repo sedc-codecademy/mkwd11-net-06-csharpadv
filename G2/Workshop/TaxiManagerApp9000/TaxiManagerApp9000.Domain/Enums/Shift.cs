@@ -4,6 +4,7 @@
     {
         Morning = 1,
         Afternoon,
-        Evening
+        Evening,
+        NoShift
     }
 }
