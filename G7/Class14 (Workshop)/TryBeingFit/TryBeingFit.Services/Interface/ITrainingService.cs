@@ -7,5 +7,8 @@ namespace TryBeingFit.Services.Interface
         void AddTraining(Training training);
         void RemoveTraining(Training training);
         void RescheduleTraining(Trainer trainer, LiveTraining liveTraining, DateTime newDate);
+        LiveTraining GetLiveTraining(int trainingSessionId);
+        List<VideoTraining> GetAllVideoTrainings();
+        List<LiveTraining> GetAllLiveTrainings();
     }
 }

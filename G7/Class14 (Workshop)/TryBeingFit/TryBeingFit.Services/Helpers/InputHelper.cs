@@ -19,5 +19,17 @@ namespace TryBeingFit.Services.Helpers
 
             return number;
         }
+
+        public static DateTime InputDateTime()
+        {
+            string input = Console.ReadLine();
+
+            if (!DateTime.TryParse(input, out DateTime dateTime))
+            {
+                throw new Exception("Wrong dateTime!");
+            }
+
+            return dateTime;
+        }
     }
 }

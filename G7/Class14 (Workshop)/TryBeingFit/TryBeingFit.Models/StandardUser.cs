@@ -22,6 +22,7 @@ namespace TryBeingFit.Models
         {
             PremiumUser premiumUser = new PremiumUser(FirstName, LastName, Username, Password, Email, Phone);
             premiumUser.UserRole = UserRole.Premium;
+            premiumUser.VideoTrainings = VideoTrainings;
             premiumUser.Id = Id;
 
             return premiumUser;

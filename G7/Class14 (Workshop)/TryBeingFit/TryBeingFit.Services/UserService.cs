@@ -67,7 +67,6 @@ namespace TryBeingFit.Services
             return u;
         }
 
-
         public bool ChangePassword(string username, string oldPassword, string newPassword)
         {
             User u = _userDatabase.GetAll().FirstOrDefault(x => string.Equals(x.Username, username, StringComparison.CurrentCultureIgnoreCase) && x.PasswordMatch(oldPassword));

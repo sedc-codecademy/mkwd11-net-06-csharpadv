@@ -11,7 +11,7 @@ namespace TryBeingFit.Models
 
         public override string GetInfo()
         {
-            return $"{Title} - {Description}, duration: {Duration} min. difficulty: {Difficulty}, link: {Link}";
+            return $"[{Id}] {Title} - {Description}, duration: {Duration} min. difficulty: {Difficulty}, link: {Link}";
         }
 
         public override string ToString()
