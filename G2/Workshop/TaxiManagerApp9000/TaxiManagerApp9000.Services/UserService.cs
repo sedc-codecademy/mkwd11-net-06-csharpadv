@@ -5,6 +5,8 @@ namespace TaxiManagerApp9000.Services
 {
     public class UserService : BaseService<User>, IUserService
     {
+        public User? CurrentUser { get; set; }
+
         public bool ChangePassword(int id, string oldPassword, string newPassword)
         {
             User user = GetById(id);
@@ -16,6 +18,7 @@ namespace TaxiManagerApp9000.Services
             if (user.Password == oldPassword)
             {
                 user.Password = newPassword;
+                //INSERT UPDATE METHOD HERE !!!
                 return true;
             }
             else
@@ -25,9 +28,19 @@ namespace TaxiManagerApp9000.Services
             }
         }
 
-        public User? Login(string username, string password)
+        public void Login(string username, string password)
         {
-            return GetAll().FirstOrDefault(x => x.Username == username && x.Password == password);
+            CurrentUser = GetAll().FirstOrDefault(x => x.Username == username && x.Password == password);
+
+            if (CurrentUser == null)
+            {
+                throw new Exception("Login unsuccessful. Please try again.");
+            }
+        }
+
+        public List<User> GetUsersForRemoval()
+        {
+            return GetAll().Where(x => x != CurrentUser).ToList();
         }
     }
 }

@@ -10,16 +10,19 @@ namespace TaxiManagerApp9000.Domain.Entities
 
         public Shift Shift { get; set; }
 
+        public int? CarId { get; set; }
+
         public string License { get; set; } = string.Empty;
 
         public DateTime LicenseExpiryDate { get; set; }
 
         public Car Car { get; set; }
 
-        public Driver(string firstName, string lastName, Shift shift, string license, DateTime licenseExpiryDate)
+        public Driver(string firstName, string lastName, Shift shift, int? carId, string license, DateTime licenseExpiryDate)
         {
             FirstName = firstName;
             LastName = lastName;
+            CarId = carId;
             Shift = shift;
             License = license;
             LicenseExpiryDate = licenseExpiryDate;
