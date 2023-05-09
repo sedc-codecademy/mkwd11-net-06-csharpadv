@@ -11,11 +11,23 @@ namespace TryBeingFit.App
     {
         static void Main(string[] args)
         {
+            bool runSeeder = false;
+
+            if (!FileHelper.FileExists(@"..\..\..\Database\Users.json")
+                && !FileHelper.FileExists(@"..\..\..\Database\Trainings.json"))
+            {
+                runSeeder = true;
+            }
+
             IDatabase<User> _userDatabase = new Database<User>();
             IDatabase<Training> _trainingDatabase = new Database<Training>();
 
             DatabaseSeeder seeder = new DatabaseSeeder(_userDatabase, _trainingDatabase);
-            seeder.Seed();
+
+            if (runSeeder)
+            {
+                seeder.Seed();
+            }
 
             IUserService _userService = new UserService(_userDatabase);
             ITrainingService _trainingService = new TrainingService(_trainingDatabase);
