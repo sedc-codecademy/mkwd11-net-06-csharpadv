@@ -35,4 +35,47 @@
 
 
 LiskovSubstitutionAppBad liskovSubstitutionAppBad = new LiskovSubstitutionAppBad();
-liskovSubstitutionAppBad.Run();
+//liskovSubstitutionAppBad.Run();
+
+
+LiskovSubstitutionAppGood liskovSubstitutionAppGood = new LiskovSubstitutionAppGood();
+//liskovSubstitutionAppGood.Run();
+
+IConvenientMarket basicMarket = new BasicMarket();
+
+IGreenMarket basicMarket1 = new BasicMarket();
+IGreenMarket basicMarket2 = new GreenMarketGood();
+IGreenMarket greenMarket3 = new SuperMarketGood();
+
+NotificationService notificationService = new NotificationService();
+notificationService.Send();
+
+Console.WriteLine();
+Console.WriteLine();
+Console.WriteLine();
+
+//IMessageSender emailService = new EmailSenderService();
+//IMessageSender smsSenderService = new SmsSenderService();
+//IMessageSender facebookSenderService = new FacebookMessageSenderService();
+
+NotificationSenderService emailSender = new NotificationSenderService(new EmailSenderService());
+NotificationSenderService facebookSender = new NotificationSenderService(new FacebookMessageSenderService());
+NotificationSenderService smsSender = new NotificationSenderService(new SmsSenderService());
+emailSender.Send();
+facebookSender.Send();
+smsSender.Send();
+
+
+Console.WriteLine();
+Console.WriteLine();
+Console.WriteLine();
+
+// Sending services from outside
+List<IMessageSender> msgSenders = new List<IMessageSender>() {
+    new EmailSenderService(),
+    new SmsSenderService(),
+    new FacebookMessageSenderService()
+};
+
+NotificationSenderMultipleService notificationSenderMultipleGood = new NotificationSenderMultipleService(msgSenders);
+notificationSenderMultipleGood.Send();
