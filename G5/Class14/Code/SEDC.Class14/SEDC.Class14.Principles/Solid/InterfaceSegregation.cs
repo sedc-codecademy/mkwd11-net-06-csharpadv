@@ -109,5 +109,114 @@
 
 
 
+    public interface IGreenMarket
+    {
+        void SellVegetables();
+        void SellFruits();
+    }
 
+    public interface IButcherMarket
+    {
+        void SellMeat();
+        int CheckMeatFridgeTemperature();
+    }
+
+    public interface IBasicMarket
+    {
+        void SellBeverages();
+        void SellMiscellaneous();
+        bool CheckStock(int itemId);
+    }
+
+    public interface IConvenientMarket : IBasicMarket, IGreenMarket { }
+    public interface ISuperMarketGood : IConvenientMarket, IButcherMarket { }
+
+
+
+    public class GreenMarketGood : IGreenMarket
+    {
+        public void SellVegetables()
+        {
+            Console.WriteLine("Vegetable is sold!");
+        }
+
+        public void SellFruits()
+        {
+            Console.WriteLine("Fruit is sold!");
+        }
+    }
+
+
+
+    public class BasicMarket : IConvenientMarket
+    {
+        public List<int> ItemIds { get; set; } = new List<int>();
+
+        public bool CheckStock(int itemId)
+        {
+            return ItemIds.Exists(x => x == itemId);
+        }
+
+        public void SellBeverages()
+        {
+            Console.WriteLine("Beverages is sold!");
+        }
+
+        public void SellMiscellaneous()
+        {
+            Console.WriteLine("Miscellaneous is sold!");
+        }
+
+        public void SellVegetables()
+        {
+            Console.WriteLine("Vegetable is sold!");
+        }
+
+        public void SellFruits()
+        {
+            Console.WriteLine("Fruit is sold!");
+        }
+    }
+
+
+    public class SuperMarketGood : ISuperMarketGood
+    {
+        public List<int> ItemIds { get; set; } = new List<int>();
+
+        public int CheckMeatFridgeTemperature()
+        {
+            // Makes request to meat temperature system and the system returns 10
+            return 10;
+        }
+
+        public bool CheckStock(int itemId)
+        {
+            return ItemIds.Exists(x => x == itemId);
+        }
+
+        public void SellBeverages()
+        {
+            Console.WriteLine("Beverage is sold!");
+        }
+
+        public void SellFruits()
+        {
+            Console.WriteLine("Fruit is sold!");
+        }
+
+        public void SellMeat()
+        {
+            Console.WriteLine("Meat is sold!");
+        }
+
+        public void SellMiscellaneous()
+        {
+            Console.WriteLine("Miscellaneous thing is sold!");
+        }
+
+        public void SellVegetables()
+        {
+            Console.WriteLine("Vegetable is sold!");
+        }
+    }
 }
