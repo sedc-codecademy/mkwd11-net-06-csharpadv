@@ -59,7 +59,6 @@ namespace FileSystemDatabase
                 return new List<T>();
             }
         }
-
         private bool Write(List<T> entites) 
         {
             try
@@ -82,20 +81,23 @@ namespace FileSystemDatabase
         {
             return Read();
         }
-
         public T GetById(int id) 
         {
             List<T> data = Read();
             return data.SingleOrDefault(entity => entity.Id == id);
         }
-
         public int Insert(T entity) 
         {
-
-        }
-
+            _idTracker++;
+            List<T> data = Read();
+            entity.Id = _idTracker;
+            data.Add(entity);
+            Write(data);
+            return entity.Id;
+         }
         public void ClearDb() 
         {
+            Write(new List<T>());
         }
     
     }
