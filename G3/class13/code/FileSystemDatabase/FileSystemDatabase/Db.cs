@@ -35,7 +35,7 @@ namespace FileSystemDatabase
 
             if (data == null)
             {
-                // write with empty list            
+                Write(new List<T>());
             }
             else if (data.Count > 0) 
             {
@@ -94,7 +94,18 @@ namespace FileSystemDatabase
             data.Add(entity);
             Write(data);
             return entity.Id;
-         }
+        }
+        public void Delete(int id) 
+        {
+            List<T> data = Read();
+            T entity = data.SingleOrDefault(entity => entity.Id == id);
+
+            if (entity is not null) 
+            {
+                data.Remove(entity);
+                Write(data);
+            }
+        }
         public void ClearDb() 
         {
             Write(new List<T>());
