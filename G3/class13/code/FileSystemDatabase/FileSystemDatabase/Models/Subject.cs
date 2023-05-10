@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FileSystemDatabase.Models
 {
-    public class Subject :BaseEntity
+    public class Subject : BaseEntity
     {
         public string Title { get; set; }
         public int Classes { get; set; }
