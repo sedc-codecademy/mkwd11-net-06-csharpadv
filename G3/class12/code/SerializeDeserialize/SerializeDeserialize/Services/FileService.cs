@@ -19,7 +19,7 @@ namespace SerializeDeserialize.Services
 
             using (StreamReader sr = new StreamReader(path, true)) 
             {
-                result = sr.ReadToEnd();
+                result = sr.ReadToEnd();        
             }
 
             return result;

@@ -166,9 +166,126 @@
 
 
 
-    // Continue with the good example here ...
+    // Good Example
+    public abstract class StudentGood
+    {
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public Academy Academy { get; set; }
+        public abstract bool CheckClassDay(Day day);
+        public abstract void GetStatus();
+    }
+
+    public class CodeStudent : StudentGood
+    {
+        public CodeStudent()
+        {
+            Academy = Academy.Code;
+        }
+
+        public bool HasProject { get; set; }
+
+        public override bool CheckClassDay(Day day)
+        {
+            if (day == Day.Monday || day == Day.Friday)
+                return true;
+
+            return false;
+        }
+
+        public override void GetStatus()
+        {
+            if (HasProject)
+            {
+                Console.WriteLine("Student has a project!");
+            }
+            else
+            {
+                Console.WriteLine("Student is still working on project!");
+            }
+        }
+    }
+
+    public class DesignStudent : StudentGood
+    {
+        public DesignStudent()
+        {
+            Academy = Academy.Design;
+        }
+
+        public int Homeworks { get; set; }
+
+        public override bool CheckClassDay(Day day)
+        {
+            if (day == Day.Tuesday || day == Day.Wednesday || day == Day.Thursday)
+                return true;
+
+            return false;
+        }
+
+        public override void GetStatus()
+        {
+            if (Homeworks > 3)
+            {
+                Console.WriteLine("Student has most of their homeworks!");
+            }
+            else
+            {
+                Console.WriteLine("Student is still working on their homeworks!");
+            }
+        }
+    }
 
 
+    public class NetworkStudent : StudentGood
+    {
+        public NetworkStudent()
+        {
+            Academy = Academy.Networks;
+        }
+
+        public int Grade { get; set; }
+
+        public override bool CheckClassDay(Day day)
+        {
+            if (day == Day.Monday || day == Day.Saturday)
+                return true;
+
+            return false;
+        }
+
+        public override void GetStatus()
+        {
+            if (Grade > 3)
+            {
+                Console.WriteLine("Student is doing well!");
+            }
+            else
+            {
+                Console.WriteLine("Student needs improvement!");
+            }
+        }
+    }
 
 
+    public enum Day
+    {
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday
+    }
+
+
+    public enum Academy
+    {
+        None,
+        Code,
+        Design, // 2nd version
+        Networks // 2nd version
+    }
 }
