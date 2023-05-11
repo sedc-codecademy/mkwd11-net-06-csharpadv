@@ -1,8 +1,8 @@
-﻿
-using TaxiManager.DomainModels.Enums;
+﻿using TaxiManager.DomainModels.Enums;
 using TaxiManager.DomainModels.Models;
 using TaxiManager.Services.Implementations;
 using TaxiManager.Services.Interfaces;
+using TaxiManager.Services.Utils;
 
 #region Setup
 
@@ -16,13 +16,91 @@ InitializeStartingData();
 #endregion
 
 
-while(true)
+while (true)
 {
     #region Login
+
+    Console.Clear();
+    if (userService.CurrentUser == null)
+    {
+        try
+        {
+            User inputUser = uiService.LogInMenu();
+            userService.Login(inputUser.Username, inputUser.Password);
+            uiService.Welcome(userService.CurrentUser);
+        }
+        catch (Exception ex)
+        {
+            ConsoleExtensions.WriteLine(ex.Message, ConsoleColor.Red);
+            Console.ReadLine();
+            continue;
+        }
+    }
+
+
+
+
+
 
     #endregion
 
     #region Menu
+    int menuChoiceNumber = uiService.MainMenu(userService.CurrentUser.Role);
+    if (menuChoiceNumber == -1)
+    {
+        continue;
+    }
+    MenuChoice mainMenuChoice = uiService.MenuItems[menuChoiceNumber - 1];
+    switch (mainMenuChoice)
+    {
+        case MenuChoice.AddNewUser:
+            string username = ConsoleExtensions.GetInput("Enter username:");
+            string password = ConsoleExtensions.GetInput("Enter password:");
+            if(!StringValidator.ValidateUsername(username) || !StringValidator.ValidatePassword(password))
+            {
+                ConsoleExtensions.WriteLine("Add new user failed! Username and Password must have at least 5 characters and password must have at least 1 number!", ConsoleColor.Red);
+                Console.ReadLine();
+                continue;
+            }
+            int roleChoice = uiService.ChooseMenu(new List<string>() { "Administrator", "Manager", "Maintenence" });
+            User newUser = new User(username, password, (Role)roleChoice);
+            userService.Add(newUser);
+            break;
+        case MenuChoice.RemoveExistingUser:
+            List<User> users = userService.GetAll().Where(x => x.Id != userService.CurrentUser.Id).ToList();
+            int choice = uiService.ChooseEntitiesMenu(users);
+            if (choice == -1) continue;
+            userService.Remove(users[choice - 1].Id);
+            break;
+        case MenuChoice.ListAllDrivers:
+            driverService.GetAll().PrintStatus();
+            break;
+        case MenuChoice.ListAllCars:
+            carService.GetAll().PrintStatus();
+            break;
+        case MenuChoice.LicensePlateStatus:
+            carService.GetAll().PrintStatus();
+            break;
+        case MenuChoice.TaxiLicenseStatus:
+            driverService.GetAll().PrintStatus();
+            break;
+        case MenuChoice.ChangePassword:
+            string oldPassword = ConsoleExtensions.GetInput("Please enter the old password:");
+            string newPassword = ConsoleExtensions.GetInput("Please enter the new password:");
+            bool isChangeSuccessfull = userService.ChangePassword(oldPassword, newPassword);
+            if(isChangeSuccessfull)
+                ConsoleExtensions.WriteLine("Password changed!", ConsoleColor.Green);
+            else
+                ConsoleExtensions.WriteLine("Password changed failed! Please try again!", ConsoleColor.Red);
+            Console.ReadLine();
+            break;
+        case MenuChoice.Exit:
+            userService.CurrentUser = null;
+            continue;
+        default:
+            break;
+    }
+
 
     #endregion
 }
@@ -33,7 +111,7 @@ while(true)
 
 void InitializeStartingData()
 {
-    User administrator = new User("BobBobsky", "bobbest1", Role.Administrator);
+    User administrator = new User("martin", "test123", Role.Administrator);
     User manager = new User("JillWayne", "jillawesome1", Role.Manager);
     User maintenances = new User("GregGregsky", "supergreg1", Role.Maintenence);
     List<User> seedUsers = new List<User>() { administrator, manager, maintenances };

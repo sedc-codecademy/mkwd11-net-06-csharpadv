@@ -60,7 +60,7 @@ namespace TaxiManager.Services.Implementations
         public int ChooseMenu<T>(List<T> items)
         {
             Console.Clear();
-            if(items.Count == 0)
+            if (items.Count == 0)
             {
                 ConsoleExtensions.NoItemsMessage<T>();
                 Console.ReadLine();
@@ -75,17 +75,17 @@ namespace TaxiManager.Services.Implementations
                     // 2. RemoveExistingUser
                     // 3. ChangePassword
                     // 4. Exit
-                    Console.WriteLine($"{i+1}. {items[i]}");
-                    int choice = StringValidator.ValidNumber(Console.ReadLine(), items.Count);
-                    if(choice == -1)
-                    {
-                        ConsoleExtensions.WriteLine("[Error] Input incorrect. Please try again!", ConsoleColor.Red);
-                        Console.ReadLine();
-                        Console.Clear();
-                        continue;
-                    }
-                    return choice;
+                    Console.WriteLine($"{i + 1}. {items[i]}");
                 }
+                int choice = StringValidator.ValidNumber(Console.ReadLine(), items.Count);
+                if (choice == -1)
+                {
+                    ConsoleExtensions.WriteLine("[Error] Input incorrect. Please try again!", ConsoleColor.Red);
+                    Console.ReadLine();
+                    Console.Clear();
+                    continue;
+                }
+                return choice;
             }
         }
 
@@ -103,10 +103,10 @@ namespace TaxiManager.Services.Implementations
                 Console.WriteLine("Enter a number to choose one of the following:");
                 for (int i = 0; i < entities.Count; i++)
                 {
-                    Console.WriteLine($"{i+1}. {entities[i].Print()}");
+                    Console.WriteLine($"{i + 1}. {entities[i].Print()}");
                 }
                 int choice = StringValidator.ValidNumber(Console.ReadLine(), entities.Count);
-                if(choice == -1)
+                if (choice == -1)
                 {
                     ConsoleExtensions.WriteLine("[Error] Input incorrect. Please try again!", ConsoleColor.Red);
                     Console.ReadLine();
@@ -116,7 +116,7 @@ namespace TaxiManager.Services.Implementations
                 return choice;
             }
         }
-        
+
     }
 
     public enum MenuChoice

@@ -21,12 +21,12 @@
 
     // Good Class Example
     // Continue Here ...
-    public class UserGood // If no access modifier specified by default it will be internal (properties & classes)
+    public class UserGood // If no access modifier specified by default it will be internal (classes)
     {
         private readonly string _userPath = @"C:\users";
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool IsLogged { get; set; }
+        public bool IsLogged { get; set; } // If no access modifier specified by default it will be private (props)
 
         public void PrintUser()
         {

@@ -72,7 +72,7 @@
     // High Level Module => NotificationService (implements low level modules)
 
     // Benefits:
-    //  - Decoupling and Loose Coupling => Reducing or completely removing dependencies in our code
+    //  - Decoupling or Loose Coupling => Reducing or completely removing dependencies in our code
     //  - Flexibility and Extensibility => By depending on abstractions, new implementations can be introduced without modifying existing code
     //  - Overall with Dependency Inversion Principle, our software will be more adaptable and easier to extend without breaking already working code
 
@@ -87,5 +87,77 @@
 
 
 
+    // Good Example
+    public interface IMessageSender
+    {
+        void SendMessage();
+    }
 
+    public class EmailSenderService : IMessageSender
+    {
+        public string EmailAddress { get; set; }
+        public string Subject { get; set; }
+        public string Content { get; set; }
+
+        public void SendMessage()
+        {
+            Console.WriteLine("Sending Email...");
+        }
+    }
+
+    public class SmsSenderService : IMessageSender
+    {
+        public string PhoneNumber { get; set; }
+        public string Message { get; set; }
+
+        public void SendMessage()
+        {
+            Console.WriteLine("Sending SMS...");
+        }
+    }
+
+    public class FacebookMessageSenderService : IMessageSender
+    {
+        public string FacebookAccount { get; set; }
+        public string Message { get; set; }
+
+        public void SendMessage()
+        {
+            Console.WriteLine("Sending Facebook Message...");
+        }
+    }
+
+
+    public class NotificationSenderService
+    {
+        private IMessageSender _messageSender;
+
+        public NotificationSenderService(IMessageSender sender)
+        {
+            _messageSender = sender;
+        }
+
+        public void Send()
+        {
+            _messageSender.SendMessage();
+        }
+    }
+
+    public class NotificationSenderMultipleService
+    {
+        private IList<IMessageSender> _messageSenderList = new List<IMessageSender>();
+
+        public NotificationSenderMultipleService(List<IMessageSender> messageSenders)
+        {
+            _messageSenderList = messageSenders;
+        }
+
+        public void Send()
+        {
+            foreach (var msgSender in _messageSenderList)
+            {
+                msgSender.SendMessage();
+            }
+        }
+    }
 }
