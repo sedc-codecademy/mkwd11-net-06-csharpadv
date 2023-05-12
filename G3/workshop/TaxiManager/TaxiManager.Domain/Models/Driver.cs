@@ -36,7 +36,6 @@ namespace TaxiManager.Domain.Models
         }
 
         public Driver() { }
-
         public Driver(string firstName,
                       string lastName,
                       Shift shift,
@@ -52,7 +51,36 @@ namespace TaxiManager.Domain.Models
 
         public override string Print()
         {
-            return $"{FullName} driving in the {Shift} shift with a car";
+            var model = Car == null ? "/" : Car.Model;
+
+            //string model = "";
+
+            //if (Car == null)
+            //{
+            //    model = "/";
+            //}
+            //else 
+            //{
+            //    model = Car.Model;
+            //}
+
+            return $"{FullName} driving in the {Shift} shift with a {model} car";
+        }
+
+        public ExpieryStatus IsLicenseExpired() 
+        {
+            if (DateTime.Today >= LicenseExpieryDate)
+            {
+                return ExpieryStatus.Expired;
+            }
+            else if (DateTime.Today.AddMonths(3) >= LicenseExpieryDate)
+            {
+                return ExpieryStatus.Warning;
+            }
+            else
+            {
+                return ExpieryStatus.Valid;
+            }
         }
     }
 }

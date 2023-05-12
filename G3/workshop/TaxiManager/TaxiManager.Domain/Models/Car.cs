@@ -11,17 +11,26 @@ namespace TaxiManager.Domain.Models
     {
         public string Model { get; set; }
         public string LicensePlate { get; set; }
-
         public DateTime LicensePlateExpieryDate{ get; set; }
-
         public List<Driver> DriversAssigned { get; set; }
+
+        public Car() {}
+        public Car(string model,
+                   string licensePlate, 
+                   DateTime expieryDate)
+        {
+            Model = model;
+            LicensePlate = licensePlate;
+            LicensePlateExpieryDate = expieryDate;
+            DriversAssigned = new List<Driver>();
+        }
 
         public override string Print()
         {
-            return $"{Model} with License Plate {LicensePlate}";
+            int assignedPercent = DriversAssigned.Count == 0 ? 0 : 100 / 3 + DriversAssigned.Count + 1;
+            return $"{Model} with License Plate {LicensePlate} and utilize {assignedPercent}";
         }
-
-        public ExpieryStatus IsLicenseExpired() 
+        public ExpieryStatus IsLicensePlateExpired() 
         {
             if (DateTime.Today >= LicensePlateExpieryDate)
             {
