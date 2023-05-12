@@ -66,7 +66,6 @@ namespace TaxiManager.Domain.Models
 
             return $"{FullName} driving in the {Shift} shift with a {model} car";
         }
-
         public ExpieryStatus IsLicenseExpired() 
         {
             if (DateTime.Today >= LicenseExpieryDate)
