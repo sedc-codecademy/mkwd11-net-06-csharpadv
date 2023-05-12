@@ -22,10 +22,16 @@ namespace TaxiManager.Domain.Models
             get => _car; 
             set
             {
-                if (value != null && _car == null) 
+                if (value != null && _car == null)
                 {
                     value.DriversAssigned.Add(this);
                 }
+                else if (value == null && _car != null) 
+                {
+                    _car.DriversAssigned.Remove(this);
+                }
+
+                _car = value;
             }
         }
 
