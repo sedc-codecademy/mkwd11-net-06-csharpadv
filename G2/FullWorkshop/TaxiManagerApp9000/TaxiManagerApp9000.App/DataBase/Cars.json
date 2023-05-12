@@ -1,0 +1,44 @@
+[
+  {
+    "Model": "Auris (Toyota)",
+    "LicensePlate": "AFW950",
+    "LicensePlateExpiryDate": "2023-12-01T00:00:00",
+    "AssignedDrivers": [],
+    "Id": 1
+  },
+  {
+    "Model": "Auris (Toyota)",
+    "LicensePlate": "CKE480",
+    "LicensePlateExpiryDate": "2021-10-15T00:00:00",
+    "AssignedDrivers": [],
+    "Id": 2
+  },
+  {
+    "Model": "Transporter (Volkswagen)",
+    "LicensePlate": "GZDR69",
+    "LicensePlateExpiryDate": "2024-05-30T00:00:00",
+    "AssignedDrivers": [],
+    "Id": 3
+  },
+  {
+    "Model": "Mondeo (Ford)",
+    "LicensePlate": "5RIP283",
+    "LicensePlateExpiryDate": "2022-05-13T00:00:00",
+    "AssignedDrivers": [],
+    "Id": 4
+  },
+  {
+    "Model": "Premier (Peugeot)",
+    "LicensePlate": "2AR9907",
+    "LicensePlateExpiryDate": "2022-11-09T00:00:00",
+    "AssignedDrivers": [],
+    "Id": 5
+  },
+  {
+    "Model": "Vito (Mercedes)",
+    "LicensePlate": "6RND294",
+    "LicensePlateExpiryDate": "2023-03-11T00:00:00",
+    "AssignedDrivers": [],
+    "Id": 6
+  }
+]
