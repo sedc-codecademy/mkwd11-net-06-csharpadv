@@ -28,7 +28,6 @@ namespace TaxiManager.Services.Implementation
             }
         }
 
-
         public User LogInMenu()
         {
             Console.WriteLine("Taxi Manager 9000");
@@ -56,8 +55,8 @@ namespace TaxiManager.Services.Implementation
             switch (role)
             {
                 case Role.Administrator:
-                    menuItems = menuItems.Prepend(MenuChoices.AddNewUser).ToList();
                     menuItems = menuItems.Prepend(MenuChoices.RemoveExistingUser).ToList();
+                    menuItems = menuItems.Prepend(MenuChoices.AddNewUser).ToList();
                     break;
                 case Role.Manager:
                     menuItems = menuItems.Prepend(MenuChoices.ListAllDivers).ToList();
@@ -73,7 +72,6 @@ namespace TaxiManager.Services.Implementation
             MenuItems = menuItems;
             return ChooseMenu(menuItems);
         }
-
         public int ChooseMenu<T>(List<T> items) 
         {
             Console.Clear();
@@ -106,11 +104,39 @@ namespace TaxiManager.Services.Implementation
 
                 return choice;
             }
-
-            
-
         }
-    
-    
+        public int ChooseEntitiesMenu<T>(List<T> entites) where T : BaseEntity
+        {
+            Console.Clear();
+
+            if (entites.Count == 0) 
+            {
+                ExtendedConsole.NoItemsMessage<T>();
+                Console.ReadLine();
+                return -1;
+            }
+
+            while (true) 
+            {
+                Console.WriteLine("Enter a number to choose one of the following: ");
+
+                for (int i = 0; i < entites.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}) {entites[i].Print()}");
+                }
+
+                int choice = StringValidator.ValidateNumber(Console.ReadLine(), entites.Count);
+
+                if (choice == -1) 
+                {
+                    ExtendedConsole.WriteLine("[Error] Input incorect. Please try again", ConsoleColor.Red);
+                    Console.ReadLine();
+                    Console.Clear();
+                    continue;
+                }
+
+                return choice;
+            }
+        }
     }
 }

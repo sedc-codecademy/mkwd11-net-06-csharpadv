@@ -3,6 +3,7 @@ using TaxiManager.Domain.Models;
 using TaxiManager.Services.Abstraction;
 using TaxiManager.Services.Implementation;
 using TaxiManager.Services.Utilities;
+using TaxiManager.Services.Utilities.Models;
 
 IUserService userService = new UserService();
 ICarService carService = new CarService();
@@ -33,17 +34,87 @@ while (true)
 
     int menuChoiceNumber = uiService.MainMenu(userService.CurrentUser.Role);
 
-    Console.ReadLine();
+    if (menuChoiceNumber == -1) 
+    {
+        continue;
+    }
+
+    MenuChoices mainMenuChoice = uiService.MenuItems[menuChoiceNumber - 1];
+    switch (mainMenuChoice)
+    {
+        case MenuChoices.AddNewUser:
+            string username = ExtendedConsole.GetInput("Enter username: ");
+            string password = ExtendedConsole.GetInput("Enter password: ");
+
+            if (!StringValidator.ValidateUsername(username) || !StringValidator.ValidatePassword(password)) 
+            {
+                ExtendedConsole.WriteLine("Add faield. Username and Password must have atleast 5 characters", ConsoleColor.Red);
+                Console.ReadLine();
+                continue;
+            }
+            break;
+        case MenuChoices.RemoveExistingUser:
+            List<User> users = userService.GetAll(user => user.Id != userService.CurrentUser.Id).ToList();
+            int choice = uiService.ChooseEntitiesMenu(users);
+
+            if (choice == -1) 
+            {
+                continue;
+            }
+
+            userService.Remove(users[choice - 1].Id);
+            break;
+        case MenuChoices.ListAllDivers:
+            driverService.GetAll().Print();
+            break;
+        case MenuChoices.TaxiLicenseStatus:
+            driverService.GetAll().PrintStatus();
+            break;
+        case MenuChoices.DriverManager:
+
+            break;
+        case MenuChoices.ListAllCars:
+            carService.GetAll().Print();
+            break;
+        case MenuChoices.LicensePlateStatuses:
+            carService.GetAll().PrintStatus();
+            break;
+        case MenuChoices.ChangePassword:
+            string oldPassword = ExtendedConsole.GetInput("Enter old password: ");
+            string newPassword = ExtendedConsole.GetInput("Enter new password: ");
+
+            bool changeSuccesfull = userService.ChangePassword(oldPassword, newPassword);
+
+            if (changeSuccesfull)
+            {
+                ExtendedConsole.WriteLine("Password changed", ConsoleColor.Green);
+            }
+            else 
+            {
+                ExtendedConsole.WriteLine("Password change failed. Please try again.", ConsoleColor.Red);
+            }
+
+            Console.ReadLine();
+            break;
+        case MenuChoices.Exit:
+            userService.CurrentUser = null;
+            continue;
+    }
+
 }
 
 
 void InitializeStartingData() 
 {
-    User easyAdministrator = new User("test", "123", Role.Administrator);
+    User easyadministrator = new User("adm", "123", Role.Administrator);
     User administrator = new User("BobBobsky", "bobbest1", Role.Administrator);
+    User easymanager = new User("mng", "123", Role.Manager);
     User manager = new User("JillWayne", "jillawesome1", Role.Manager);
+    User easymaintenances = new User("mnt", "123", Role.Maintenance);
     User maintenances = new User("GregGregsky", "supergreg1", Role.Maintenance);
-    List<User> seedUsers = new List<User>() { easyAdministrator, administrator, manager, maintenances };
+    List<User> seedUsers = new List<User>() { 
+        easyadministrator, administrator, easymanager, manager, easymaintenances, maintenances };
+    
     userService.Seed(seedUsers);
 
     Car car1 = new Car("Auris (Toyota)", "AFW950", new DateTime(2023, 12, 1));
