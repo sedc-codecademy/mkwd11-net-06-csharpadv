@@ -39,12 +39,14 @@ namespace TaxiManager.Domain.Models
         public Driver(string firstName,
                       string lastName,
                       Shift shift,
+                      Car car,
                       string license,
                       DateTime expieryDate)
         {
             FirstName = firstName;
             LastName = lastName;
             Shift = shift;
+            Car = car;
             License = license;
             LicenseExpieryDate = expieryDate;
         }

@@ -10,6 +10,6 @@ namespace TaxiManager.Domain.Enums
     {
         Administrator = 0,
         Manager,
-        Maintenence
+        Maintenance
     }
 }
