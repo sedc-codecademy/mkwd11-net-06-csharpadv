@@ -22,14 +22,17 @@ namespace TaxiManager.Domain.Models
             get => _car; 
             set
             {
-                if (value != null && _car == null)
-                {
-                    value.DriversAssigned.Add(this);
-                }
-                else if (value == null && _car != null) 
-                {
-                    _car.DriversAssigned.Remove(this);
-                }
+                // this is making the problem with the file system database
+                // comment this in order to run the code when switching to file systed database
+
+                //if (value != null && _car == null)
+                //{
+                //    value.DriversAssigned.Add(this);
+                //}
+                //else if (value == null && _car != null)
+                //{
+                //    _car.DriversAssigned.Remove(this);
+                //}
 
                 _car = value;
             }

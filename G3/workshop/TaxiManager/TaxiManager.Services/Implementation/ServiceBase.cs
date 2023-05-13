@@ -15,7 +15,8 @@ namespace TaxiManager.Services.Implementation
 
         public ServiceBase()
         {
-            _db = new LocalDb<T>();
+            //_db = new LocalDb<T>();
+            _db = new FileSystemDb<T>();
         }
         public void Add(T item)
         {
@@ -44,6 +45,8 @@ namespace TaxiManager.Services.Implementation
 
         public void Seed(List<T> items)
         {
+            var test = _db.GetAll();
+
             if (_db.GetAll().Count > 0) 
             {
                 return;

@@ -45,7 +45,6 @@ while (true)
         case MenuChoices.AddNewUser:
             string username = ExtendedConsole.GetInput("Enter username: ");
             string password = ExtendedConsole.GetInput("Enter password: ");
-
             if (!StringValidator.ValidateUsername(username) || !StringValidator.ValidatePassword(password)) 
             {
                 ExtendedConsole.WriteLine("Add faield. Username and Password must have atleast 5 characters", ConsoleColor.Red);
@@ -56,12 +55,10 @@ while (true)
         case MenuChoices.RemoveExistingUser:
             List<User> users = userService.GetAll(user => user.Id != userService.CurrentUser.Id).ToList();
             int choice = uiService.ChooseEntitiesMenu(users);
-
             if (choice == -1) 
             {
                 continue;
             }
-
             userService.Remove(users[choice - 1].Id);
             break;
         case MenuChoices.ListAllDivers:
@@ -71,7 +68,46 @@ while (true)
             driverService.GetAll().PrintStatus();
             break;
         case MenuChoices.DriverManager:
+            var driverManagerMenu = new List<DriverManagerChoice>() 
+            { DriverManagerChoice.AssignDriver, DriverManagerChoice.UnassignDriver };
 
+            int driverManagerChoice = uiService.ChooseMenu(driverManagerMenu);
+
+            var availableDrivers = driverService.GetAll(driver => driverService.IsAvailableDriver(driver));
+
+            if (driverManagerChoice == 1)
+            {
+                var availableForAssigningDrivers = availableDrivers.Where(driver => driver.Car == null).ToList();
+                var assigningDrvierChoice = uiService.ChooseEntitiesMenu(availableForAssigningDrivers);
+
+                if (assigningDrvierChoice == -1) 
+                {
+                    continue;
+                }
+
+                var availableCarsForAssigning = carService.GetAll(car => carService.IsAvailableCar(car)).ToList();
+                var assigningCarChoice = uiService.ChooseEntitiesMenu(availableCarsForAssigning);
+
+                if (assigningCarChoice == -1)
+                {
+                    continue;
+                }
+
+                driverService.AssignDriver(availableForAssigningDrivers[assigningDrvierChoice - 1], 
+                                           availableCarsForAssigning[assigningCarChoice - 1]);
+            }
+            else if (driverManagerChoice == 2) 
+            {
+                var availableForUnassigningDrivers = availableDrivers.Where(driver => driver.Car != null).ToList();
+                var unassigningDrvierChoice = uiService.ChooseEntitiesMenu(availableForUnassigningDrivers);
+
+                if (unassigningDrvierChoice == -1)
+                {
+                    continue;
+                }
+
+                driverService.UnassignDriver(availableForUnassigningDrivers[unassigningDrvierChoice - 1]);
+            }
             break;
         case MenuChoices.ListAllCars:
             carService.GetAll().Print();

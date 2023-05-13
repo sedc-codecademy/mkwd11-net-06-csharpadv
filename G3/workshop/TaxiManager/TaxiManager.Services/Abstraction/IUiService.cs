@@ -15,6 +15,7 @@ namespace TaxiManager.Services.Abstraction
         User LogInMenu();
         void Welcome(User user);
         int MainMenu(Role role);
+        int ChooseMenu<T>(List<T> items);
         int ChooseEntitiesMenu<T>(List<T> entites) where T : BaseEntity;
     }
 }
