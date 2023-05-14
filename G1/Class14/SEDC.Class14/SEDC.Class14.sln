@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.GoodPractices", "SEDC.GoodPractices\SEDC.GoodPractices.csproj", "{64DE15B4-84F3-42FA-AC9D-9455886A4CD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SEDC.GoodPractices", "SEDC.GoodPractices\SEDC.GoodPractices.csproj", "{64DE15B4-84F3-42FA-AC9D-9455886A4CD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.Principles", "SEDC.Principles\SEDC.Principles.csproj", "{80F572C1-5946-4B85-BCB1-18B51F0A5CD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SEDC.Principles", "SEDC.Principles\SEDC.Principles.csproj", "{80F572C1-5946-4B85-BCB1-18B51F0A5CD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SEDC.GetterSetter", "SEDC.GetterSetter\SEDC.GetterSetter.csproj", "{1D85D79E-875E-4C5A-984A-CA286440B01D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{80F572C1-5946-4B85-BCB1-18B51F0A5CD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80F572C1-5946-4B85-BCB1-18B51F0A5CD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80F572C1-5946-4B85-BCB1-18B51F0A5CD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D85D79E-875E-4C5A-984A-CA286440B01D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D85D79E-875E-4C5A-984A-CA286440B01D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D85D79E-875E-4C5A-984A-CA286440B01D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D85D79E-875E-4C5A-984A-CA286440B01D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
